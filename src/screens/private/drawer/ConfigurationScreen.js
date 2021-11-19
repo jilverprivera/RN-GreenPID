@@ -20,23 +20,8 @@ import {COLORS} from '../../../constants';
 
 const ControlScreen = ({navigation}) => {
   const {
-    configuration: {
-      manualButton,
-      setManualButton,
-      automaticButton,
-      setAutomaticButton,
-    },
+    configuration: {manualButton, automaticButton, handleActiveConfigButton},
   } = useContext(AppContext);
-
-  const handleActiveConfig = button => {
-    if (button === 'automatic') {
-      setManualButton(false);
-      setAutomaticButton(!automaticButton);
-    } else {
-      setManualButton(!manualButton);
-      setAutomaticButton(false);
-    }
-  };
 
   return (
     <SafeAreaView style={globals.container}>
@@ -50,7 +35,7 @@ const ControlScreen = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.8}
             style={configStyles.selectableButton}
-            onPress={() => handleActiveConfig('automatic')}>
+            onPress={() => handleActiveConfigButton('automatic')}>
             <Text style={configStyles.selectableButtonText}>
               Control automático
             </Text>
@@ -60,7 +45,7 @@ const ControlScreen = ({navigation}) => {
               color={COLORS.white}
             />
           </TouchableOpacity>
-          {automaticButton && <CardAutomatic />}
+          {automaticButton && <CardAutomatic handleActiveConfigButton={handleActiveConfigButton} />}
         </View>
 
         <View
@@ -72,7 +57,7 @@ const ControlScreen = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.8}
             style={configStyles.selectableButton}
-            onPress={() => handleActiveConfig()}>
+            onPress={() => handleActiveConfigButton()}>
             <Text style={configStyles.selectableButtonText}>
               Control manual
             </Text>
@@ -82,7 +67,7 @@ const ControlScreen = ({navigation}) => {
               color={COLORS.white}
             />
           </TouchableOpacity>
-          {manualButton && <CardManual />}
+          {manualButton && <CardManual handleActiveConfigButton={handleActiveConfigButton} />}
         </View>
       </ScrollView>
     </SafeAreaView>
