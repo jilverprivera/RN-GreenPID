@@ -2,7 +2,7 @@
     GreenPID
 </h1>
 
-
+![demo](https://raw.githubusercontent.com/jilverprivera/RN-GreenPID/main/src/images/demo.png)
 ## 🧾 Acerca
 
  GreenPID es una alternativa educativa para que los estudiantes del programa de ingeniería electrónica de la Universidad de Investigación y Desarrollo puedan manipular las ganancias de un sistema de control y demas variables de proceso en un prototipo del sector agroindustrial (invernadero).
