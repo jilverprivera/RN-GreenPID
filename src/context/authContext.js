@@ -1,28 +1,33 @@
 import React, {createContext, useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-
-export const AuthContext = createContext();
+import {Alert} from 'react-native';
 
 const authInitialState = {
   status: 'checking',
   userId: null,
   userName: null,
+  name: null,
+  userEmail: null,
 };
+
+export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
   const [userState, setUserState] = useState(authInitialState);
-  console.log(userState);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // <--------------------------------- HOOKS ---------------------------------->
+  // <--- HOOKS ---> //
   useEffect(() => {
     auth().onAuthStateChanged(user => {
       if (user?.uid) {
+        const firstName = user.displayName.split('');
         setUserState({
           ...userState,
           status: 'authenticated',
           userId: user.uid,
           userName: user.displayName,
+          name: firstName,
         });
       } else {
         setUserState({
@@ -33,24 +38,29 @@ export const AuthProvider = ({children}) => {
     });
   }, []);
 
-  // <--------------------------------- FUNCTIONS ---------------------------------->
+  // <--- FUNCTIONS ---> //
   const StartLoginWithEmailAndPassword = async (email, password) => {
-    await auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(({user}) => {
-        setUserState({
-          ...userState,
-          status: 'authenticated',
-          userId: user.uid,
-          userName: user.displayName,
+    try {
+      setIsLoading(true);
+      await auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(({user}) => {
+          setUserState({
+            ...userState,
+            status: 'authenticated',
+            userEmail: email,
+            userId: user.uid,
+            userName: user.displayName,
+          });
         });
-      });
-  };
-
-  const saveData = async (email, id, name) => {
-    await firestore()
-      .collection(`Users/${id}/data`)
-      .add({uid: id, userName: name, email: email});
+    } catch (err) {
+      console.warn('Error', err);
+      Alert.alert(
+        'Error.',
+        'Usuario o contraseña son incorrectos, por favor vuelve a intentar',
+      );
+    }
+    setIsLoading(false);
   };
 
   const StartRegisterWithEmailPasswordAndName = async (
@@ -58,19 +68,46 @@ export const AuthProvider = ({children}) => {
     password,
     name,
   ) => {
-    await auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(async ({user}) => {
-        console.log(user);
-        await user.updateProfile({displayName: name});
-        setUserState({
-          ...userState,
-          status: 'authenticated',
-          userId: user.uid,
-          userName: name,
+    try {
+      setIsLoading(true);
+      await auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(async ({user}) => {
+          await user.updateProfile({displayName: name});
+          setUserState({
+            ...userState,
+            status: 'authenticated',
+            userId: user.uid,
+            userName: name,
+          });
+          await saveData(email, user.uid, name);
         });
-        await saveData(email, user.uid, name);
+    } catch (err) {
+      console.warn('Error', err);
+      Alert.alert(
+        'Error.',
+        'Hubo un error guardando tu información en la base de datos, por favor intenta de nuevo.',
+      );
+    }
+    setIsLoading(false);
+  };
+
+  const saveData = async (email, id, name) => {
+    try {
+      await firestore()
+        .collection(`Users/${id}/data`)
+        .add({uid: id, userName: name, email: email});
+      setUserState({
+        ...userState,
+        userEmail: email,
       });
+    } catch (err) {
+      console.warn('Error', err);
+      Alert.alert(
+        'Ops...',
+        'Hubo un error guardando tu información en la base de datos.',
+      );
+    }
   };
 
   const SignOut = async () => {
@@ -80,12 +117,15 @@ export const AuthProvider = ({children}) => {
       status: 'not-authenticated',
       userId: null,
       userName: null,
+      name: null,
+      userEmail: null,
     });
   };
 
-  // <--------------------------------- STATE ---------------------------------->
+  // <--- STATE ---> //
   const authState = {
     userState,
+    isLoading,
     StartLoginWithEmailAndPassword,
     StartRegisterWithEmailPasswordAndName,
     SignOut,
