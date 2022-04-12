@@ -1,0 +1,43 @@
+import {StyleSheet} from 'react-native';
+import {COLORS, FONTS, SIZES} from '../constants';
+
+export const GLOBAL_STYLES = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+    width: SIZES.width,
+    backgroundColor: COLORS.background,
+    position: 'relative',
+  },
+  screenWrapper: {
+    flex: 1,
+    width: SIZES.width - SIZES.margin,
+    alignSelf: 'center',
+  },
+
+  headerContainer: {
+    position: 'relative',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: SIZES.width - SIZES.margin,
+    marginTop: SIZES.margin,
+    marginBottom: SIZES.margin * 1.5,
+    height: 50,
+  },
+  button: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  title: {
+    fontSize: SIZES.heading5,
+    fontFamily: FONTS.medium,
+    color: COLORS.darkGray,
+  },
+});
