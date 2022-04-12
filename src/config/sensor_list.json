@@ -1,0 +1,27 @@
+[
+    {
+        "id": "temperature",
+        "icon": "thermometer",
+        "name": "Temperatura"
+    },
+    {
+        "id": "relative_humidity",
+        "icon": "mixcloud",
+        "name": "Humedad relativa"
+      },
+      {
+        "id": "ground_humidity",
+        "icon": "seedling",
+        "name": "Humedad de suelo"
+      },
+      {
+        "id": "carbono_percentage",
+        "icon": "wind",
+        "name": "Calidad de aire"
+      },
+      {
+        "id": "irrigation_system",
+        "icon": "tint",
+        "name": "Sistema de riego"
+      }
+]
