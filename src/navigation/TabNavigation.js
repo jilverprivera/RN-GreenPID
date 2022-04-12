@@ -1,72 +1,129 @@
 import React from 'react';
+import {TouchableOpacity, Text, View, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  HomeScreen,
+  InformationScreen,
+  UserManualScreen,
+  SettingScreen,
+} from '../screens/private';
+import {COLORS, SIZES} from '../constants';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import FAQScreen from '../screens/private/FAQScreen';
-// import HomeScreen from '../screens/private/HomeScreen';
-import ConfigurationScreen from '../screens/private/ProfileScreen';
-import {COLORS} from '../constants';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import DrawerNavigation from './DrawerNavigation';
+const TabArr = [
+  {
+    route: 'homeScreen',
+    label: 'Inicio',
+    icon: 'th-large',
+    component: HomeScreen,
+    color: COLORS.primary,
+    alphaClr: COLORS.black,
+  },
+  {
+    route: 'userManualsScreen',
+    label: 'Manuales',
+    icon: 'book',
+    component: UserManualScreen,
+    color: COLORS.primary,
+    alphaClr: COLORS.black,
+  },
+  {
+    route: 'settingsScreen',
+    label: 'Configuración',
+    icon: 'user-cog',
+    component: SettingScreen,
+    color: COLORS.primary,
+    alphaClr: COLORS.black,
+  },
+
+  // {
+  //   route: 'informationScreen',
+  //   label: 'Información',
+  //   icon: 'info-circle',
+  //   component: InformationScreen,
+  //   color: COLORS.primary,
+  //   alphaClr: COLORS.black,
+  // },
+];
+
+const TabButton = ({item, onPress, accessibilityState}) => {
+  const focused = accessibilityState.selected;
+
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={1}
+      style={STYLES.container}>
+      <View>
+        <View style={STYLES.btn}>
+          <Icon
+            size={24}
+            name={item.icon}
+            color={focused ? COLORS.black : COLORS.lightGray}
+          />
+          {focused && <Text style={STYLES.text}>{item.label}</Text>}
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const Tab = createBottomTabNavigator();
-
-const CustomTabBarButton = ({children, onPress}) => (
-  <TouchableOpacity
-    onPress={onPress}
-    activeOpacity={0.9}
-    style={styles.customButton}>
-    <View style={styles.buttonContainer}>{children}</View>
-  </TouchableOpacity>
-);
 
 const TabNavigation = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="homeScreen"
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: {...styles.tabContent},
-        tabBarIcon: ({focused}) => {
-          let iconName = '';
-          switch (route.name) {
-            case 'FAQ':
-              iconName = 'book-outline';
-              break;
-
-            case 'Profile':
-              iconName = 'person-circle-outline';
-              break;
-          }
-          return (
-            <Ionicons
-              name={iconName}
-              size={30}
-              color={focused ? COLORS.secondary : COLORS.black}
-            />
-          );
-        },
+        tabBarStyle: {...STYLES.tabContent},
       })}>
-      <Tab.Screen name="FAQ" component={FAQScreen} />
-      <Tab.Screen
-        name="Home"
-        component={DrawerNavigation}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <Ionicons
-              name="home-outline"
-              size={30}
-              color={focused ? COLORS.white : COLORS.black}
-            />
-          ),
-          tabBarButton: props => <CustomTabBarButton {...props} />,
-        }}
-      />
-      <Tab.Screen name="Profile" component={ConfigurationScreen} />
+      {TabArr.map((item, index) => {
+        return (
+          <Tab.Screen
+            key={index}
+            name={item.route}
+            component={item.component}
+            options={{
+              tabBarShowLabel: false,
+              tabBarButton: props => <TabButton {...props} item={item} />,
+            }}
+          />
+        );
+      })}
     </Tab.Navigator>
   );
 };
 
 export default TabNavigation;
+
+const STYLES = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  tabContent: {
+    height: 70,
+    position: 'absolute',
+    bottom: SIZES.margin / 2,
+    left: SIZES.margin / 2,
+    right: SIZES.margin / 2,
+    borderRadius: SIZES.borders,
+  },
+  btn: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: SIZES.padding / 1.2,
+    borderRadius: SIZES.borders,
+    // marginRight: SIZES.margin * 2,
+  },
+  text: {
+    // paddingLeft: SIZES.padding / 2,
+    color: COLORS.black,
+    fontSize: SIZES.body4,
+  },
+});
