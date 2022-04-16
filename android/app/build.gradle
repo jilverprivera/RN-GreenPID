@@ -3,7 +3,7 @@ apply plugin: "com.android.application"
 apply plugin: 'com.google.gms.google-services'
 
 project.ext.vectoricons = [
-    iconFontNames: [ 'Ionicons.ttf', "MaterialCommunityIcons.ttf", ] // Name of the font files you want to copy
+    iconFontNames: [ "FontAwesome5.ttf" ] // Name of the font files you want to copy
 ]
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
@@ -139,6 +139,7 @@ android {
 
     defaultConfig {
         applicationId "com.greenpid"
+        multiDexEnabled true
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
