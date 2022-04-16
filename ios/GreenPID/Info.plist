@@ -79,6 +79,11 @@
 		<string>Poppins-Medium.ttf</string>
 		<string>Poppins-Regular.ttf</string>
 		<string>Poppins-SemiBold.ttf</string>
+		<string>AnekTamil-Bold.ttf</string>
+		<string>AnekTamil-Light.ttf</string>
+		<string>AnekTamil-Medium.ttf</string>
+		<string>AnekTamil-Regular.ttf</string>
+		<string>AnekTamil-SemiBold.ttf</string>
 	</array>
 </dict>
 </plist>

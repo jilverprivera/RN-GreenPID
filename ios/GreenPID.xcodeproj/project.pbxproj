@@ -38,6 +38,11 @@
 		725E8B3B4AA1406B90F17504 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F576CC9A582C47E7BE148376 /* Poppins-Medium.ttf */; };
 		BFBF08641AB44D55A97CB7F6 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC3764ED80BB4C82B125C21B /* Poppins-Regular.ttf */; };
 		908518F2CDCA49BB83AA1077 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86DC52800A994DEC984A7FB2 /* Poppins-SemiBold.ttf */; };
+		9459F18C2AFF4D7785B1E5FA /* AnekTamil-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCC8AE7992B94F80A929DDE1 /* AnekTamil-Bold.ttf */; };
+		89B6B65234F0431BBA11A4D1 /* AnekTamil-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35AB0ADD6D6241648E93C710 /* AnekTamil-Light.ttf */; };
+		B8E44294AB764E1DA309D2B6 /* AnekTamil-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC79A81C22E045F18B0F8DED /* AnekTamil-Medium.ttf */; };
+		90856FA7DFBA4BA5B6B88719 /* AnekTamil-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 418DE82906BF457390299CAD /* AnekTamil-Regular.ttf */; };
+		546B9A58E735441CBFBDBFE2 /* AnekTamil-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F27BF06FDBA249918ADF0E37 /* AnekTamil-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +93,11 @@
 		F576CC9A582C47E7BE148376 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		FC3764ED80BB4C82B125C21B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		86DC52800A994DEC984A7FB2 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; name = "Poppins-SemiBold.ttf"; path = "../assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BCC8AE7992B94F80A929DDE1 /* AnekTamil-Bold.ttf */ = {isa = PBXFileReference; name = "AnekTamil-Bold.ttf"; path = "../assets/fonts/AnekTamil-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		35AB0ADD6D6241648E93C710 /* AnekTamil-Light.ttf */ = {isa = PBXFileReference; name = "AnekTamil-Light.ttf"; path = "../assets/fonts/AnekTamil-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CC79A81C22E045F18B0F8DED /* AnekTamil-Medium.ttf */ = {isa = PBXFileReference; name = "AnekTamil-Medium.ttf"; path = "../assets/fonts/AnekTamil-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		418DE82906BF457390299CAD /* AnekTamil-Regular.ttf */ = {isa = PBXFileReference; name = "AnekTamil-Regular.ttf"; path = "../assets/fonts/AnekTamil-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F27BF06FDBA249918ADF0E37 /* AnekTamil-SemiBold.ttf */ = {isa = PBXFileReference; name = "AnekTamil-SemiBold.ttf"; path = "../assets/fonts/AnekTamil-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +216,11 @@
 				F576CC9A582C47E7BE148376 /* Poppins-Medium.ttf */,
 				FC3764ED80BB4C82B125C21B /* Poppins-Regular.ttf */,
 				86DC52800A994DEC984A7FB2 /* Poppins-SemiBold.ttf */,
+				BCC8AE7992B94F80A929DDE1 /* AnekTamil-Bold.ttf */,
+				35AB0ADD6D6241648E93C710 /* AnekTamil-Light.ttf */,
+				CC79A81C22E045F18B0F8DED /* AnekTamil-Medium.ttf */,
+				418DE82906BF457390299CAD /* AnekTamil-Regular.ttf */,
+				F27BF06FDBA249918ADF0E37 /* AnekTamil-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -327,6 +342,11 @@
 				725E8B3B4AA1406B90F17504 /* Poppins-Medium.ttf in Resources */,
 				BFBF08641AB44D55A97CB7F6 /* Poppins-Regular.ttf in Resources */,
 				908518F2CDCA49BB83AA1077 /* Poppins-SemiBold.ttf in Resources */,
+				9459F18C2AFF4D7785B1E5FA /* AnekTamil-Bold.ttf in Resources */,
+				89B6B65234F0431BBA11A4D1 /* AnekTamil-Light.ttf in Resources */,
+				B8E44294AB764E1DA309D2B6 /* AnekTamil-Medium.ttf in Resources */,
+				90856FA7DFBA4BA5B6B88719 /* AnekTamil-Regular.ttf in Resources */,
+				546B9A58E735441CBFBDBFE2 /* AnekTamil-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
