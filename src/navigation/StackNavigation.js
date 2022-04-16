@@ -3,17 +3,16 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {AuthContext} from '../context';
 
-import SignInScreen from '../screens/public/SignInScreen';
+import TabNavigation from './TabNavigation';
 import {
   InformationScreen,
   ManualControlScreen,
+  ManualDetailScreen,
   NotificationScreen,
   PredefinedControlScreen,
 } from '../screens/private';
-
+import {SignInScreen, SignUpScreen, WelcomeScreen} from '../screens/public';
 import LoadingScreen from '../screens/Loading.screen';
-import TabNavigation from './TabNavigation';
-import SignUpScreen from '../screens/public/SignUpScreen';
 
 const Stack = createStackNavigator();
 
@@ -22,7 +21,7 @@ const StackNavigation = () => {
   const {status} = userState;
 
   if (status === 'checking') {
-    return <Stack.Screen name="loading" component={LoadingScreen} />;
+    return <LoadingScreen />;
   }
 
   return (
@@ -31,7 +30,7 @@ const StackNavigation = () => {
         headerShown: false,
       }}
       initialRouteName={
-        status === 'authenticated' ? 'tabStack' : 'signInScreen'
+        status === 'authenticated' ? 'tabStack' : 'welcomeScreen'
       }>
       {status === 'authenticated' ? (
         <>
@@ -41,6 +40,10 @@ const StackNavigation = () => {
             component={InformationScreen}
           />
           <Stack.Screen
+            name="manualDetailScreen"
+            component={ManualDetailScreen}
+          />
+          <Stack.Screen
             name="manualControlScreen"
             component={ManualControlScreen}
           />
@@ -48,13 +51,10 @@ const StackNavigation = () => {
             name="predefinedControlScreen"
             component={PredefinedControlScreen}
           />
-          <Stack.Screen
-            name="notificationScreen"
-            component={NotificationScreen}
-          />
         </>
       ) : (
         <>
+          <Stack.Screen name="welcomeScreen" component={WelcomeScreen} />
           <Stack.Screen name="signInScreen" component={SignInScreen} />
           <Stack.Screen name="signUpScreen" component={SignUpScreen} />
         </>
