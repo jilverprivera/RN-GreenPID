@@ -1,33 +1,11 @@
-import React, {useEffect, useRef} from 'react';
-import {
-  ActivityIndicator,
-  Animated,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React from 'react';
+import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import {COLORS, FONTS, SIZES} from '../constants';
 
 const LoadingScreen = () => {
-  const transition = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    Animated.timing(transition, {
-      toValue: 100,
-      delay: 500,
-      useNativeDriver: true,
-    }).start();
-  }, []);
-
   return (
-    <View
-      style={{
-        backgroundColor: COLORS.primary,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <ActivityIndicator size="large" color={COLORS.white} />
+    <View style={styles.content}>
+      <ActivityIndicator size="large" color={COLORS.black} />
       <Text style={styles.text}>Aguarda un momento</Text>
       <Text style={styles.text2}>Estamos validando tu información</Text>
     </View>
@@ -37,14 +15,20 @@ const LoadingScreen = () => {
 export default LoadingScreen;
 
 const styles = StyleSheet.create({
+  content: {
+    backgroundColor: COLORS.background,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   text: {
     fontFamily: FONTS.semibold,
-    color: COLORS.white,
-    fontSize: SIZES.h2,
+    color: COLORS.black,
+    fontSize: SIZES.heading2,
   },
-  text2:{
-    fontFamily: FONTS.semibold,
-    color: COLORS.white,
-    fontSize: SIZES.h3,  
-  }
+  text2: {
+    fontFamily: FONTS.regular,
+    color: COLORS.black,
+    fontSize: SIZES.body1,
+  },
 });
