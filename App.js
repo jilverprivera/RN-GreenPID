@@ -4,9 +4,8 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import StackNavigation from './src/navigation/StackNavigation';
 
-import {Text, View} from 'react-native';
-import {AppProvider} from './src/context/appContext';
-import {AuthProvider} from './src/context/authContext';
+import {AuthProvider, AppProvider} from './src/context/';
+
 const App = () => {
   return (
     <NavigationContainer>
