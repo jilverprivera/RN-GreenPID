@@ -4,20 +4,18 @@ import {COLORS, FONTS, SIZES} from '../constants';
 export const HOME_STYLES = StyleSheet.create({
   header: {
     width: SIZES.width - SIZES.margin,
-    height: 50,
+    // height: 50,
     alignSelf: 'center',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginVertical: 20,
+    marginVertical: SIZES.margin * 1.5,
+    // borderWidth: 1,
   },
-  buttonWrapper: {
-    position: 'absolute',
-    right: 0,
-    width: 110,
-    height: 50,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+  userName: {
+    fontSize: SIZES.heading2,
+    fontFamily: FONTS.semibold,
+    color: COLORS.black,
   },
 
   button: {
@@ -25,6 +23,11 @@ export const HOME_STYLES = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  wrapper: {
+    backgroundColor: COLORS.white,
+    padding: SIZES.margin / 2,
   },
 
   msgWrapper: {
@@ -46,7 +49,6 @@ export const HOME_STYLES = StyleSheet.create({
   flatlist: {
     width: SIZES.width,
     alignSelf: 'center',
-    // marginBottom: SIZES.margin * 2,
   },
 
   bottomSheet: {
@@ -83,5 +85,11 @@ export const HOME_STYLES = StyleSheet.create({
     borderWidth: 2,
     borderColor: COLORS.darkGray,
     borderRadius: 3,
+  },
+  chartContainer: {
+    width: SIZES.width,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: SIZES.width,
   },
 });

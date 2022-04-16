@@ -21,8 +21,8 @@ export const GLOBAL_STYLES = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: SIZES.width - SIZES.margin,
-    marginTop: SIZES.margin,
-    marginBottom: SIZES.margin * 1.5,
+    marginTop: SIZES.margin * 1.5,
+    // marginBottom: SIZES.margin * 1.5,
     height: 50,
   },
   button: {
@@ -36,8 +36,8 @@ export const GLOBAL_STYLES = StyleSheet.create({
   },
 
   title: {
-    fontSize: SIZES.heading5,
+    fontSize: SIZES.heading4,
     fontFamily: FONTS.medium,
-    color: COLORS.darkGray,
+    color: COLORS.black,
   },
 });

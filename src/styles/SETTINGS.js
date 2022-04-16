@@ -1,13 +1,20 @@
 import {StyleSheet} from 'react-native';
 import {COLORS, FONTS, SIZES} from '../constants';
 
-export const SETTING_STYLES = StyleSheet.create({
+export const SETTINGS = StyleSheet.create({
   title: {
     fontSize: SIZES.heading3,
     fontFamily: FONTS.semibold,
     color: COLORS.black,
     marginBottom: SIZES.margin,
     marginHorizontal: SIZES.margin,
+  },
+
+  userInformationWrapper: {
+    marginTop: SIZES.margin * 2,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   userName: {
     fontSize: SIZES.body1,
@@ -22,6 +29,10 @@ export const SETTING_STYLES = StyleSheet.create({
     justifyContent: 'center',
   },
   id: {fontSize: SIZES.body3, fontFamily: FONTS.light, color: COLORS.black},
+
+  optionsWrapper: {
+    marginTop: SIZES.margin * 3,
+  },
 
   logOutBtn: {
     borderWidth: 2,
