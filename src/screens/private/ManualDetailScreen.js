@@ -1,15 +1,9 @@
-import {
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Text,
-  View,
-} from 'react-native';
 import React from 'react';
+import {StyleSheet, ScrollView, Text, View} from 'react-native';
 import Animated from 'react-native-reanimated';
 import Markdown from 'react-native-markdown-display';
 
-import {AppUseMarkdown} from '../../data/appUse';
+import {applicationUsage} from '../../manuals/applicationUsage';
 
 import Header from '../../components/core/header';
 
@@ -38,7 +32,7 @@ const ManualDetailScreen = ({route}) => {
         contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
         style={GLOBAL_STYLES.screenWrapper}>
-        <Markdown style={MARKDOWN_STYLES}>{AppUseMarkdown}</Markdown>
+        <Markdown style={MARKDOWN_STYLES}>{applicationUsage}</Markdown>
       </ScrollView>
     </Animated.View>
   );

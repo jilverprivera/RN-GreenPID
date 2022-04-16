@@ -1,4 +1,4 @@
-export const AppUseMarkdown = `
+export const applicationUsage = `
 # h1 Heading 8-)
 
 ## h2 Heading 2
