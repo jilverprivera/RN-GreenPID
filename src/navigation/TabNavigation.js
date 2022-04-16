@@ -3,7 +3,7 @@ import {TouchableOpacity, Text, View, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   HomeScreen,
-  InformationScreen,
+  NotificationScreen,
   UserManualScreen,
   SettingScreen,
 } from '../screens/private';
@@ -37,14 +37,14 @@ const TabArr = [
     alphaClr: COLORS.black,
   },
 
-  // {
-  //   route: 'informationScreen',
-  //   label: 'Información',
-  //   icon: 'info-circle',
-  //   component: InformationScreen,
-  //   color: COLORS.primary,
-  //   alphaClr: COLORS.black,
-  // },
+  {
+    route: 'notificationScreen',
+    label: 'Notificaciones',
+    icon: 'bell',
+    component: NotificationScreen,
+    color: COLORS.primary,
+    alphaClr: COLORS.black,
+  },
 ];
 
 const TabButton = ({item, onPress, accessibilityState}) => {
@@ -53,7 +53,7 @@ const TabButton = ({item, onPress, accessibilityState}) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      activeOpacity={1}
+      activeOpacity={0.7}
       style={STYLES.container}>
       <View>
         <View style={STYLES.btn}>
@@ -62,7 +62,7 @@ const TabButton = ({item, onPress, accessibilityState}) => {
             name={item.icon}
             color={focused ? COLORS.black : COLORS.lightGray}
           />
-          {focused && <Text style={STYLES.text}>{item.label}</Text>}
+          {/* {focused && <Text style={STYLES.text}>{item.label}</Text>} */}
         </View>
       </View>
     </TouchableOpacity>
@@ -107,11 +107,12 @@ const STYLES = StyleSheet.create({
   },
   tabContent: {
     height: 70,
-    position: 'absolute',
-    bottom: SIZES.margin / 2,
-    left: SIZES.margin / 2,
-    right: SIZES.margin / 2,
-    borderRadius: SIZES.borders,
+    // position: 'absolute',
+    // bottom: SIZES.margin / 2,
+    // left: SIZES.margin / 2,
+    // right: SIZES.margin / 2,
+    borderTopLeftRadius: SIZES.borders,
+    borderTopRightRadius: SIZES.borders,
   },
   btn: {
     flexDirection: 'column',
