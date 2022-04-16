@@ -21,13 +21,13 @@ export const AuthProvider = ({children}) => {
   useEffect(() => {
     auth().onAuthStateChanged(user => {
       if (user?.uid) {
-        const firstName = user.displayName.split('');
+        const firstName = user.displayName.split(' ');
         setUserState({
           ...userState,
           status: 'authenticated',
           userId: user.uid,
           userName: user.displayName,
-          name: firstName,
+          name: firstName[0],
         });
       } else {
         setUserState({
