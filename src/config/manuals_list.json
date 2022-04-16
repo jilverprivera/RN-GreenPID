@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Manual de uso de la aplicación",
+        "name": "Uso de la aplicación",
         "icon": "book",
         "tags": [
             {"id": 1, "name": "Uso general"},
