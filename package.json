@@ -35,6 +35,7 @@
     "react-native-svg": "^12.3.0",
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^9.0.0",
+    "validator": "^13.7.0",
     "victory-native": "^36.3.0"
   },
   "devDependencies": {
