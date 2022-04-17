@@ -56,6 +56,12 @@ export const AppProvider = ({children}) => {
     await database()
       .ref(`${userId}/variables`)
       .update({...obj});
+    await addMessageToStorage({
+      message: 'Actualización exitosa en DB',
+      icon: 'check',
+      date: new Date(),
+      type: 'success',
+    });
   };
 
   useEffect(() => {
