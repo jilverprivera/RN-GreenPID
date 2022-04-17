@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {
+  Alert,
   StatusBar,
   KeyboardAvoidingView,
   Platform,
@@ -16,12 +17,20 @@ import {Input} from '../../components/core';
 
 import {COLORS} from '../../constants';
 import {GLOBAL_STYLES, AUTH_STYLES} from '../../styles';
+import {signInValidator} from '../../helpers/authValidator';
 
 const SignInScreen = ({navigation}) => {
   const {form, onChange} = useForm({email: '', password: ''});
   const {email, password} = form;
 
   const {StartLoginWithEmailAndPassword, isLoading} = useContext(AuthContext);
+
+  const signIn = async () => {
+    const isValid = signInValidator(email, password);
+    if (isValid) {
+      await StartLoginWithEmailAndPassword(email, password);
+    }
+  };
 
   return (
     <SafeAreaView style={GLOBAL_STYLES.screenContainer}>
@@ -68,7 +77,7 @@ const SignInScreen = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.7}
             style={[AUTH_STYLES.btn, {backgroundColor: COLORS.primary}]}
-            onPress={() => StartLoginWithEmailAndPassword(email, password)}
+            onPress={() => signIn(email, password)}
             disabled={isLoading}>
             <Text style={AUTH_STYLES.btnText}>Ingresar</Text>
           </TouchableOpacity>

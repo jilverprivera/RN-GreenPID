@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {
+  Alert,
   StatusBar,
   KeyboardAvoidingView,
   Platform,
@@ -16,12 +17,20 @@ import {Input} from '../../components/core';
 
 import {COLORS} from '../../constants';
 import {GLOBAL_STYLES, AUTH_STYLES} from '../../styles';
+import {signUpValidator} from '../../helpers/authValidator';
 
 const SignUpScreen = ({navigation}) => {
   const {StartRegisterWithEmailPasswordAndName, isLoading} =
     useContext(AuthContext);
   const {form, onChange} = useForm({name: '', email: '', password: ''});
   const {name, email, password} = form;
+
+  const signUp = () => {
+    const isValid = signUpValidator(email, password, name);
+    if (isValid) {
+      StartRegisterWithEmailPasswordAndName(email, password, name);
+    }
+  };
 
   return (
     <SafeAreaView style={GLOBAL_STYLES.screenContainer}>
@@ -75,9 +84,7 @@ const SignUpScreen = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.7}
             style={[AUTH_STYLES.btn, {backgroundColor: COLORS.primary}]}
-            onPress={() =>
-              StartRegisterWithEmailPasswordAndName(email, password, name)
-            }
+            onPress={() => signUp()}
             disabled={isLoading}>
             <Text style={AUTH_STYLES.btnText}>Crear cuenta</Text>
           </TouchableOpacity>
