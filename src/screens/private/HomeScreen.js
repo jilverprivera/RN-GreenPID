@@ -105,7 +105,11 @@ const HomeScreen = ({navigation, animated}) => {
 
         <ScrollView>
           <View style={HOME_STYLES.chartContainer}>
-            {fullData.length > 0 ? (
+            {fullData.length === 0 ? (
+              <View>
+                <Text>Aún no hay datos recolectados</Text>
+              </View>
+            ) : fullData.length > 0 ? (
               <Chart
                 data={chartData}
                 minDomain={{
