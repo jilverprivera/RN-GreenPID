@@ -1,4 +1,4 @@
-import {stylesPDF} from './stylesPDF';
+import {stylesPDF} from '../styles/stylesPDF';
 
 export const templatePDF = (data, title) => {
   return `
