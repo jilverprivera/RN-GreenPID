@@ -19,15 +19,14 @@ export const AuthProvider = ({children}) => {
 
   // <--- HOOKS ---> //
   useEffect(() => {
-    auth().onAuthStateChanged(user => {
+    auth().onAuthStateChanged(async user => {
       if (user?.uid) {
-        const firstName = user.displayName.split(' ');
+        await getData(user.uid);
         setUserState({
           ...userState,
           status: 'authenticated',
           userId: user.uid,
           userName: user.displayName,
-          name: firstName[0],
         });
       } else {
         setUserState({
@@ -70,6 +69,7 @@ export const AuthProvider = ({children}) => {
   ) => {
     try {
       setIsLoading(true);
+      const firstName = await name.split(' ');
       await auth()
         .createUserWithEmailAndPassword(email, password)
         .then(async ({user}) => {
@@ -79,8 +79,9 @@ export const AuthProvider = ({children}) => {
             status: 'authenticated',
             userId: user.uid,
             userName: name,
+            name: firstName[0],
           });
-          await saveData(email, user.uid, name);
+          await saveData(email, user.uid, name, firstName);
         });
     } catch (err) {
       console.warn('Error', err);
@@ -92,11 +93,11 @@ export const AuthProvider = ({children}) => {
     setIsLoading(false);
   };
 
-  const saveData = async (email, id, name) => {
+  const saveData = async (email, id, name, firstName) => {
     try {
       await firestore()
         .collection(`Users/${id}/data`)
-        .add({uid: id, userName: name, email: email});
+        .add({uid: id, userName: name, email: email, name: firstName});
       setUserState({
         ...userState,
         userEmail: email,
@@ -106,6 +107,33 @@ export const AuthProvider = ({children}) => {
       Alert.alert(
         'Ops...',
         'Hubo un error guardando tu información en la base de datos.',
+      );
+    }
+  };
+
+  const getData = async id => {
+    try {
+      if (id) {
+        await firestore()
+          .collection(`Users/${id}/data`)
+          .onSnapshot(query =>
+            query.forEach(doc =>
+              setUserState({
+                ...userState,
+                status: 'authenticated',
+                userId: doc.data().uid,
+                userName: doc.data().userName,
+                name: doc.data().name[0],
+                userEmail: doc.data().email,
+              }),
+            ),
+          );
+      }
+    } catch (err) {
+      console.warn('Error', err);
+      Alert.alert(
+        'Ops...',
+        'Hubo un error obteniendo tu información de la base de datos.',
       );
     }
   };
