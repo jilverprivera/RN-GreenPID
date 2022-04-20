@@ -11,7 +11,7 @@ import {COLORS, SIZES} from '../constants';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const TabArr = [
+const tabScreens = [
   {
     route: 'homeScreen',
     label: 'Inicio',
@@ -54,15 +54,15 @@ const TabButton = ({item, onPress, accessibilityState}) => {
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
-      style={STYLES.container}>
+      style={STYLES.buttonContainer}>
       <View>
-        <View style={STYLES.btn}>
+        <View style={STYLES.icon}>
           <Icon
             size={24}
             name={item.icon}
             color={focused ? COLORS.black : COLORS.lightGray}
           />
-          {/* {focused && <Text style={STYLES.text}>{item.label}</Text>} */}
+          {focused && <View style={STYLES.dot} />}
         </View>
       </View>
     </TouchableOpacity>
@@ -78,9 +78,9 @@ const TabNavigation = () => {
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: {...STYLES.tabContent},
+        tabBarStyle: {...STYLES.tab},
       })}>
-      {TabArr.map((item, index) => {
+      {tabScreens.map((item, index) => {
         return (
           <Tab.Screen
             key={index}
@@ -100,31 +100,29 @@ const TabNavigation = () => {
 export default TabNavigation;
 
 const STYLES = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  tabContent: {
+  tab: {
     height: 70,
-    // position: 'absolute',
-    // bottom: SIZES.margin / 2,
-    // left: SIZES.margin / 2,
-    // right: SIZES.margin / 2,
+    backgroundColor: COLORS.white,
     borderTopLeftRadius: SIZES.borders,
     borderTopRightRadius: SIZES.borders,
+    borderTopWidth: 0,
+    elevation: 0,
   },
-  btn: {
+  buttonContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: SIZES.padding / 1.2,
-    borderRadius: SIZES.borders,
-    // marginRight: SIZES.margin * 2,
   },
-  text: {
-    // paddingLeft: SIZES.padding / 2,
-    color: COLORS.black,
-    fontSize: SIZES.body4,
+  dot: {
+    width: 6,
+    height: 6,
+    borderRadius: 5,
+    backgroundColor: COLORS.black,
+    marginTop: SIZES.margin / 4,
   },
 });
