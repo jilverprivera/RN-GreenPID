@@ -14,6 +14,7 @@ import AirQuality from '../screens/variables/AirQuality';
 import GroundHumidity from '../screens/variables/GroundHumidity';
 import RelativeHumidity from '../screens/variables/RelativeHumidity';
 import Temperature from '../screens/variables/Temperature';
+import WaterLevel from '../screens/variables/WaterLevel';
 
 export const stackPublicRoutes = [
   // Auth ✅
@@ -30,7 +31,7 @@ export const stackPrivateRoutes = [
   {route: 'RelativeDetail', component: RelativeHumidity},
   {route: 'GroundDetail', component: GroundHumidity},
   {route: 'AirQualityDetail', component: AirQuality},
-  {route: 'WaterLevelDetail', component: Tabs},
+  {route: 'WaterLevelDetail', component: WaterLevel},
 
   // Manuals ✅
   {route: 'TemperatureManual', component: TemperatureManual},
