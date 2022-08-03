@@ -4,11 +4,9 @@ export const COLORS = {
   lightGray: '#D5D5D5',
   darkGray: '#5B616A',
   black: '#01091E',
-  primary: '#137344',
-  secondary: '#49D49D',
-
-  auxiliar_1: '#4F7CAC',
-  auxiliar_2: '#A6D9F7',
-  auxiliar_3: '#BCCCE0',
-  auxiliar_4: '#ED217C',
+  primary: '#2ED470',
+  aux_primary: '#49D49D',
+  secondary: '#FFC83B',
+  accent: '#069CDD',
+  error: '#ED217C',
 };
