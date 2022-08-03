@@ -1,6 +1,6 @@
 import {stylesPDF} from '../styles/stylesPDF';
 
-export const templatePDF = (data, title) => {
+export const templatePDF = (data, title, units) => {
   return `
     <html>
       <head>
@@ -55,7 +55,7 @@ export const templatePDF = (data, title) => {
                           <span>${hourTime} - ${dateTime}</span>
                         </td>
                         <td>
-                          <span>${item.yAxis} °C</span>
+                          <span>${item.yAxis} ${units}</span>
                         </td>
                       </tr>`;
             })}          
