@@ -10,7 +10,7 @@ export const GLOBAL_STYLES = StyleSheet.create({
   },
   screenWrapper: {
     flex: 1,
-    width: SIZES.width - SIZES.margin,
+    width: SIZES.width - SIZES.margin * 2,
     alignSelf: 'center',
   },
 
@@ -20,8 +20,8 @@ export const GLOBAL_STYLES = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     alignItems: 'center',
-    width: SIZES.width - SIZES.margin,
-    marginTop: SIZES.margin * 1.5,
+    width: SIZES.width - SIZES.margin * 2,
+    marginTop: SIZES.margin / 2,
     // marginBottom: SIZES.margin * 1.5,
     height: 50,
   },
@@ -32,7 +32,7 @@ export const GLOBAL_STYLES = StyleSheet.create({
     width: 50,
     height: 50,
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
 
   title: {

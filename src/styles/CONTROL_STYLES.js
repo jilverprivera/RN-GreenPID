@@ -11,7 +11,7 @@ export const CONTROL = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: SIZES.padding * 1.25,
-    backgroundColor: COLORS.secondary,
+    backgroundColor: COLORS.primary,
     borderRadius: SIZES.borders,
     marginTop: SIZES.margin * 2,
   },

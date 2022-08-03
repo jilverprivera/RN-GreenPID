@@ -1,15 +1,8 @@
-import {AUTH_STYLES} from './AUTH_STYLES';
 import {GLOBAL_STYLES} from './GLOBAL_STYLES';
 import {HOME_STYLES} from './HOME_STYLES';
 import {SETTINGS} from './SETTINGS';
 import {CONTROL} from './CONTROL_STYLES';
 import {STEP_STYLES} from './STEP_STYLES';
+import {GRAPH} from './GRAPH_STYLES';
 
-export {
-  CONTROL,
-  AUTH_STYLES,
-  GLOBAL_STYLES,
-  HOME_STYLES,
-  SETTINGS,
-  STEP_STYLES,
-};
+export {CONTROL, GLOBAL_STYLES, HOME_STYLES, SETTINGS, STEP_STYLES, GRAPH};

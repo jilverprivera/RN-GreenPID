@@ -3,31 +3,32 @@ import {COLORS, FONTS, SIZES} from '../constants';
 
 export const HOME_STYLES = StyleSheet.create({
   header: {
-    width: SIZES.width - SIZES.margin,
-    // height: 50,
+    width: SIZES.width - SIZES.margin * 2,
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginVertical: SIZES.margin * 1.5,
-    // borderWidth: 1,
+    marginTop: SIZES.margin * 1.5,
+    marginBottom: SIZES.margin * 0.75,
   },
-  userName: {
-    fontSize: SIZES.heading2,
-    fontFamily: FONTS.semibold,
+  welcomeMessage: {
+    fontSize: SIZES.heading1,
+    fontFamily: FONTS.medium,
     color: COLORS.black,
+    marginBottom: SIZES.margin / 4,
   },
 
   button: {
     width: 50,
     height: 50,
+    borderRadius: 25,
+    backgroundColor: COLORS.white,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   wrapper: {
     backgroundColor: COLORS.white,
-    padding: SIZES.margin / 2,
   },
 
   msgWrapper: {
@@ -44,11 +45,8 @@ export const HOME_STYLES = StyleSheet.create({
     fontSize: SIZES.body3,
     fontFamily: FONTS.regular,
     color: COLORS.black,
-  },
-
-  flatlist: {
-    width: SIZES.width,
-    alignSelf: 'center',
+    marginLeft: SIZES.margin,
+    marginBottom: SIZES.margin / 3,
   },
 
   bottomSheet: {
@@ -68,7 +66,6 @@ export const HOME_STYLES = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    backgroundColor: COLORS.white,
     // borderWidth: 2,
   },
   sheetBtnWrapper: {
@@ -86,10 +83,36 @@ export const HOME_STYLES = StyleSheet.create({
     borderColor: COLORS.darkGray,
     borderRadius: 3,
   },
+  chartTitle: {
+    textAlign: 'center',
+    marginTop: SIZES.margin,
+    fontSize: SIZES.heading2,
+    color: COLORS.black,
+    fontFamily: FONTS.medium,
+  },
+
   chartContainer: {
     width: SIZES.width,
     alignItems: 'center',
     justifyContent: 'center',
-    height: SIZES.width,
+    height: SIZES.width - SIZES.margin * 2.5,
+  },
+
+  detailsBtn: {
+    marginTop: SIZES.margin * 1.5,
+    height: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    backgroundColor: COLORS.primary,
+    width: SIZES.width - SIZES.margin * 2,
+    borderRadius: SIZES.borders,
+  },
+  detailsBtnText: {
+    textAlign: 'center',
+    fontSize: SIZES.body1,
+    color: COLORS.background,
+    fontFamily: FONTS.medium,
   },
 });

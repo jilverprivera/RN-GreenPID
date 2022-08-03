@@ -36,7 +36,7 @@ export const SETTINGS = StyleSheet.create({
 
   logOutBtn: {
     borderWidth: 2,
-    borderColor: COLORS.auxiliar_4,
+    borderColor: COLORS.error,
     padding: SIZES.padding,
     borderRadius: SIZES.borders,
     width: SIZES.width / 2,
@@ -50,6 +50,6 @@ export const SETTINGS = StyleSheet.create({
     fontSize: SIZES.body1,
     marginLeft: SIZES.margin,
     fontFamily: FONTS.semibold,
-    color: COLORS.auxiliar_4,
+    color: COLORS.error,
   },
 });
