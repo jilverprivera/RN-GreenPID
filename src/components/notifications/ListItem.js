@@ -10,12 +10,12 @@ import Animated, {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {PanGestureHandler} from 'react-native-gesture-handler';
 
-import {COLORS, SIZES} from '../../constants';
+import {COLORS, FONTS, SIZES} from '../../constants';
 
-const LIST_ITEM_HEIGHT = 100;
+const LIST_ITEM_HEIGHT = 115;
 const TRANSLATEX_THRESHOLD = SIZES.width * 0.4;
 
-const ListItem = ({message, icon, date, type, onDismiss}) => {
+const ListItem = ({message, icon, date, type, id, onDismiss}) => {
   let noteDate = new Date(date);
   const currentDate = `${noteDate.toLocaleTimeString(
     'co-ES',
@@ -38,7 +38,7 @@ const ListItem = ({message, icon, date, type, onDismiss}) => {
         marginVertical.value = withTiming(0);
         opacityContainer.value = withTiming(0, undefined, isFinished => {
           if (isFinished && onDismiss) {
-            runOnJS(onDismiss)(message);
+            runOnJS(onDismiss)(id);
           }
         });
       } else {
@@ -73,14 +73,18 @@ const ListItem = ({message, icon, date, type, onDismiss}) => {
               STYLES.icon,
               {
                 backgroundColor:
-                  type === 'success' ? COLORS.secondary : COLORS.auxiliar_4,
+                  type === 'success'
+                    ? COLORS.secondary
+                    : type === 'warning'
+                    ? COLORS.auxiliar_2
+                    : type === 'danger' && COLORS.auxiliar_4,
               },
             ]}>
             <Icon size={32} color={COLORS.white} name={icon} />
           </View>
-          <View>
-            <Text style={STYLES.text}>{message}</Text>
-            <Text style={STYLES.text}>{currentDate}</Text>
+          <View style={STYLES.messageContent}>
+            <Text style={STYLES.message}>{message}</Text>
+            <Text style={STYLES.date}>{currentDate}</Text>
           </View>
         </Animated.View>
       </PanGestureHandler>
@@ -95,10 +99,16 @@ export default ListItem;
 
 const STYLES = StyleSheet.create({
   container: {
-    width: '100%',
+    width: SIZES.width - SIZES.margin,
+    alignSelf: 'center',
     alignItems: 'center',
+    // borderWidth: 1,
+    // flex: 1,
+    // marginBottom: SIZES.margin,
   },
   list: {
+    // borderWidth: 1,
+
     width: SIZES.width - SIZES.margin,
     alignSelf: 'center',
     height: LIST_ITEM_HEIGHT,
@@ -117,7 +127,7 @@ const STYLES = StyleSheet.create({
     shadowRadius: 2.22,
     elevation: 3,
   },
-  text: {color: COLORS.black},
+
   icon: {
     width: 70,
     height: 70,
@@ -126,11 +136,24 @@ const STYLES = StyleSheet.create({
     justifyContent: 'center',
     marginRight: SIZES.margin / 2,
   },
+  messageContent: {
+    width: SIZES.width - 70 * 2 + 7.5,
+  },
+  message: {
+    color: COLORS.black,
+    fontFamily: FONTS.medium,
+    fontSize: SIZES.body2,
+  },
+  date: {
+    color: COLORS.darkGray,
+    fontFamily: FONTS.regular,
+    fontSize: SIZES.body3,
+    marginTop: SIZES.margin / 2,
+  },
 
   iconContainer: {
     height: LIST_ITEM_HEIGHT,
     width: LIST_ITEM_HEIGHT,
-    // backgroundColor: 'red',
     position: 'absolute',
     right: '10%',
     alignItems: 'center',

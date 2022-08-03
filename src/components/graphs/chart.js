@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {COLORS, SIZES} from '../../constants';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 
 import {
   VictoryAxis,
@@ -11,19 +11,12 @@ import {
   VictoryTheme,
   VictoryLegend,
 } from 'victory-native';
+import {ThemeContext} from '../../context/ThemeContext';
 
-const Chart = ({
-  data,
-  setpointData,
-  minDomain,
-  maxDomain,
-  yLabel,
-  xAxis,
-  yAxis,
-  legend,
-}) => {
+const Chart = ({data, minDomain, maxDomain, yLabel, xAxis, yAxis, legend}) => {
+  const {tw, colorScheme} = useContext(ThemeContext);
   return (
-    <View style={STYLES.chartContainer}>
+    <View style={tw`w-full`}>
       <VictoryChart
         width={SIZES.width}
         theme={VictoryTheme.material}
@@ -33,20 +26,10 @@ const Chart = ({
           duration: 1000,
           onLoad: {duration: 1000},
         }}>
-        {legend && (
-          <VictoryLegend
-            x={20}
-            orientation="horizontal"
-            data={[
-              {name: yLabel, symbol: {fill: COLORS.black}},
-              {name: 'Setpoint', symbol: {fill: COLORS.primary}},
-            ]}
-          />
-        )}
         <VictoryGroup>
           <VictoryLine
             style={{
-              data: {stroke: COLORS.primary},
+              data: {stroke: colorScheme === 'dark' ? '#6D28D9' : '#22c55e'},
             }}
             data={data}
             interpolation="natural"
@@ -58,7 +41,11 @@ const Chart = ({
           />
 
           <VictoryScatter
-            style={{data: {fill: COLORS.primary}}}
+            style={{
+              data: {
+                fill: colorScheme === 'dark' ? '#6D28D9' : '#22c55e',
+              },
+            }}
             data={data}
             labels={({datum}) => datum.yAxis}
             size={5}
@@ -70,10 +57,11 @@ const Chart = ({
           />
         </VictoryGroup>
         <VictoryAxis
-          label="Número de muestras"
+          // label="Número de muestras"
           style={{
-            axis: {stroke: COLORS.black},
-            axisLabel: {fontSize: SIZES.body2, padding: 30},
+            axis: {stroke: colorScheme === 'dark' ? '#FFF' : '#000'},
+            grid: {stroke: 'transparent'},
+            axisLabel: {fontSize: SIZES.body3, padding: 25},
             tickLabels: {padding: 0},
           }}
         />
@@ -81,8 +69,14 @@ const Chart = ({
           dependentAxis
           label={`${yLabel}`}
           style={{
-            axis: {stroke: COLORS.black},
-            axisLabel: {fontSize: SIZES.body2, padding: 30},
+            axis: {
+              stroke: colorScheme === 'dark' ? '#FFF' : '#000',
+            },
+            grid: {stroke: 'transparent'},
+            axisLabel: {
+              fontSize: SIZES.body3,
+              padding: 25,
+            },
             tickLabels: {padding: 0},
           }}
         />
@@ -92,7 +86,3 @@ const Chart = ({
 };
 
 export default Chart;
-
-const STYLES = StyleSheet.create({
-  chartContainer: {width: SIZES.width - SIZES.margin, alignSelf: 'center'},
-});

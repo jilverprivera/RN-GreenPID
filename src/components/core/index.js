@@ -1,6 +1,5 @@
 import Message from './text';
-import Chart from './chart';
+import Chart from '../graphs/chart';
 import Input from './input';
-import Header from './header';
 
-export {Header, Chart, Input, Message};
+export {Chart, Input, Message};

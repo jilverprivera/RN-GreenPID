@@ -1,7 +1,7 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
+import {Text, TextInput, View} from 'react-native';
 
-import {COLORS, FONTS, SIZES} from '../../constants';
+import {ThemeContext} from '../../context/ThemeContext';
 
 const Input = ({
   text,
@@ -11,12 +11,18 @@ const Input = ({
   secureText,
   placeholder,
 }) => {
+  const {tw, colorScheme} = useContext(ThemeContext);
   return (
-    <View style={STYLES.container}>
-      {text && <Text style={STYLES.text}>{text}</Text>}
+    <View style={tw`w-full mb-4`}>
+      {text && (
+        <Text
+          style={tw`w-full text-base font-normal text-neutral-900 dark:text-zinc-100 mb-2`}>
+          {text}
+        </Text>
+      )}
       <TextInput
-        style={STYLES.input}
-        placeholderTextColor={COLORS.darkGray}
+        style={tw`w-full p-4 bg-white dark:bg-zinc-900 rounded-xl text-base text-zinc-900 dark:text-zinc-100`}
+        placeholderTextColor={colorScheme === 'dark' ? '#FFF' : '#DDD'}
         placeholder={placeholder}
         secureTextEntry={secureText}
         keyboardType={keyboardType}
@@ -27,27 +33,3 @@ const Input = ({
 };
 
 export default Input;
-
-const STYLES = StyleSheet.create({
-  container: {
-    width: '100%',
-    marginBottom: SIZES.margin,
-  },
-  text: {
-    width: '100%',
-    fontSize: SIZES.body3,
-    fontFamily: FONTS.regular,
-    color: COLORS.black,
-    marginVertical: SIZES.margin / 2,
-  },
-  input: {
-    width: '100%',
-    backgroundColor: COLORS.white,
-    // height: 50,
-    padding: SIZES.padding,
-    borderRadius: SIZES.borders,
-    fontSize: SIZES.body2,
-    fontFamily: FONTS.medium,
-    color: COLORS.black,
-  },
-});

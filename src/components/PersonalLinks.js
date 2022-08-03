@@ -1,37 +1,29 @@
-import React from 'react';
-import {Linking, StyleSheet, TouchableOpacity, View} from 'react-native';
+import React, {useContext} from 'react';
+import {Linking, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import {COLORS} from '../constants';
+import {ThemeContext} from '../context/ThemeContext';
 
-const data = [
-  {id: 1, url: 'https://github.com/jilverprivera', iconName: 'github'},
-  {id: 2, url: 'www.linkedin.com/in/jilverprivera', iconName: 'linkedin'},
-  {
-    id: 3,
-    url: 'https://www.instagram.com/jilverprivera',
-    iconName: 'instagram',
-  },
-  {id: 4, url: 'https://twitter.com/Jilverprivera', iconName: 'twitter'},
-];
+import NETWORKS from '../data/NETWORKS.json';
+
 const PersonalLinks = () => {
+  const {tw, colorScheme} = useContext(ThemeContext);
   return (
-    <View style={STYLES.container}>
-      {data.map(item => (
+    <View style={tw`flex flex-row`}>
+      {NETWORKS.map((item, index) => (
         <TouchableOpacity
           activeOpacity={0.7}
-          style={STYLES.icon}
-          key={item.id}
+          style={tw`mr-5 mt-2`}
+          key={index}
           onPress={() => Linking.openURL(item.url)}>
-          <Icon name={item.iconName} size={32} color={COLORS.black} />
+          <Icon
+            name={item.iconName}
+            size={32}
+            color={colorScheme === 'dark' ? '#FFF' : '#000'}
+          />
         </TouchableOpacity>
       ))}
     </View>
   );
 };
 export default PersonalLinks;
-
-const STYLES = StyleSheet.create({
-  container: {flexDirection: 'row'},
-  icon: {marginTop: 10, marginRight: 20},
-});
