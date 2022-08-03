@@ -6,10 +6,10 @@ import {templatePDF} from '../config/templatePDF';
 
 import {isPermitted} from './systemPermissions';
 
-export const generatePDF = async (data, fileTitle) => {
+export const generatePDF = async (data, fileTitle, units) => {
   if (await isPermitted) {
     let options = {
-      html: templatePDF(data, fileTitle),
+      html: templatePDF(data, fileTitle, units),
       fileName: fileTitle,
       directory: 'files',
     };
