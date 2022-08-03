@@ -1,54 +1,81 @@
 import {useContext, useEffect, useState} from 'react';
 import database from '@react-native-firebase/database';
-import {AuthContext} from '../context';
+import {AppContext} from '../context/AppContext';
 
 const tempInitialState = {
-  fullData: [],
-  chartData: [],
+  temperature: [],
+  fullTemperature: [],
+  lastTemperature: null,
+  max: null,
+  min: null,
+  average: null,
 };
 
 export const useTemperature = () => {
-  const {userState} = useContext(AuthContext);
+  const {userState} = useContext(AppContext);
   const {userId} = userState;
-  // const [fullTemperature, setFullTemperature] = useState([]);
-  const [temperature, setTemperature] = useState(tempInitialState);
-
+  const [data, setData] = useState(tempInitialState);
   useEffect(() => {
     if (userId) {
-      const tempRef = database().ref(`/${userId}/sensors/temperature`);
-      const onTempChange = tempRef.on('value', snapshot => {
-        let data = [];
+      const ref = database().ref('/sensors/temperature_1');
+      const onApiChanges = ref.on('value', snapshot => {
+        let arr = [];
         snapshot.forEach((item, index) => {
-          data.push({
+          arr.push({
             yAxis: item.val().value,
             xAxis: index,
-            time: item.val().ts,
+            time: new Date(item.val().value).toLocaleTimeString(),
           });
         });
 
-        const dataShorted = data.slice(
-          data.length > 10 ? data.length - 10 : 0,
-          data.length,
+        const shortedData = arr.slice(
+          arr.length > 10 ? arr.length - 10 : 0,
+          arr.length,
         );
-        setTemperature({
-          ...temperature,
-          fullData: data,
-          chartData: dataShorted,
-        });
 
-        // setFullTemperature(data);
+        const arrData = arr.slice(
+          arr.length > 50 ? arr.length - 50 : 0,
+          arr.length,
+        );
+
+        const lastData = arr[arr.length - 1];
+
+        let maxValue = Math.max.apply(
+          Math,
+          arrData.map(item => {
+            return item.yAxis;
+          }),
+        );
+
+        let minValue = Math.min.apply(
+          Math,
+          arrData.map(item => {
+            return item.yAxis;
+          }),
+        );
+
+        let sum = arrData.reduce((acc, el) => {
+          return acc + el.yAxis;
+        }, 0);
+
+        let average = sum / arrData.length;
+
+        setData({
+          fullTemperature: arr,
+          temperature: shortedData,
+          lastTemperature: lastData,
+          max: maxValue.toFixed(2),
+          min: minValue.toFixed(2),
+          average: average.toFixed(2),
+        });
       });
       return () => {
-        tempRef.off('value', onTempChange);
+        ref.off('value', onApiChanges);
       };
     } else {
-      setTemperature({
-        ...temperature,
-        fullData: [],
-        chartData: [],
-      });
+      setData(tempInitialState);
     }
   }, [userId]);
 
-  return temperature;
+  return data;
 };
