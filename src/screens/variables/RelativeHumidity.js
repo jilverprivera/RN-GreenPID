@@ -1,18 +1,21 @@
 import React, {useContext} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {ThemeContext} from '../../context/ThemeContext';
-import LinearGradient from 'react-native-linear-gradient';
-import {SIZES} from '../../constants';
 
-import {LineChart} from 'react-native-chart-kit';
 import Header from '../../components/layout/header';
+import ChartTitle from '../../components/core/chartTitle';
+import LinearChart from '../../components/core/linearChart';
+
 import {DarkTheme, LightTheme} from '../../config/LinearGradientColors';
 import {VariablesContext} from '../../context/VariablesContext';
+import {SIZES} from '../../constants';
 
 const RelativeHumidity = () => {
   const {tw, colorScheme} = useContext(ThemeContext);
-  const {firstRelativeHumidity} = useContext(VariablesContext);
+  const {firstRelativeHumidity, secondRelativeHumidity} =
+    useContext(VariablesContext);
 
   return (
     <LinearGradient
@@ -21,59 +24,66 @@ const RelativeHumidity = () => {
       end={{x: 1.5, y: 1}}
       style={tw`flex-1 w-full relative`}>
       <Header title="Humedad relativa" withBack={true} />
-      <ScrollView style={tw`w-11/12 mx-auto`}>
-        <LineChart
-          data={{
-            labels: firstRelativeHumidity
-              .slice(
-                firstRelativeHumidity.length > 10
-                  ? firstRelativeHumidity.length - 10
-                  : 0,
-                firstRelativeHumidity.length,
-              )
-              .map(item => item.yAxis),
-            datasets: [
-              {
-                data: firstRelativeHumidity
-                  .slice(
-                    firstRelativeHumidity.length > 10
-                      ? firstRelativeHumidity.length - 10
-                      : 0,
-                    firstRelativeHumidity.length,
-                  )
-                  .map(item => item.yAxis),
-              },
-            ],
-          }}
-          width={SIZES.width * 0.9}
-          height={SIZES.width * 0.89}
-          yAxisSuffix="%"
-          yAxisInterval={1}
-          xAxisLabel="%"
-          fromNumber={100}
-          fromZero
-          verticalLabelRotation={-90}
-          xLabelsOffset={30}
-          chartConfig={{
-            backgroundGradientFrom: '#7e22ce',
-            backgroundGradientTo: '#ea580c',
-            paddingTop: 30,
-            decimalPlaces: 1,
-            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            propsForDots: {
-              r: '5',
-              strokeWidth: '2.5',
-              stroke: '#ffa726',
-            },
-            propsForBackgroundLines: {
-              stroke: 0,
-            },
-          }}
-          bezier
-          style={tw`rounded-2xl mt-5`}
-        />
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={{...tw`w-full`, height: SIZES.width * 1.05}}>
+        <View style={tw`flex flex-col items-center justify-center`}>
+          <ChartTitle title="Gráfica humedad relativa 1" />
+          <LinearChart
+            data={firstRelativeHumidity}
+            ySuffix=" %"
+            xSuffix=" %"
+            maxLimit={100}
+            yOffset={20}
+            xOffset={20}
+          />
+        </View>
+        <View style={tw`flex flex-col items-center justify-center`}>
+          <ChartTitle title="Gráfica humedad relativa 2" />
+          <LinearChart
+            data={secondRelativeHumidity}
+            ySuffix=" %"
+            xSuffix=" %"
+            maxLimit={100}
+            yOffset={20}
+            xOffset={20}
+          />
+        </View>
       </ScrollView>
+      <ScrollView style={{...tw`w-11/12 mx-auto pt-10`, height: SIZES.width}}>
+        <View>
+          <Text
+            style={tw`text-lg text-zinc-900 dark:text-zinc-100 font-semibold tracking-wide mb-3`}>
+            Generar PDF
+          </Text>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={tw`w-full border-2 py-6 px-3 mb-3 rounded-xl`}>
+            <Text
+              style={tw`text-base text-zinc-900 dark:text-zinc-100 font-medium tracking-wide`}>
+              Gráfica 1
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={tw`w-full border-2 py-6 px-3 rounded-xl`}>
+            <Text
+              style={tw`text-base text-zinc-900 dark:text-zinc-100 font-medium tracking-wide`}>
+              Gráfica 2
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+      {/* <LinearGradient
+      colors={
+        colorScheme === 'dark'
+          ? ['#18181b', '#111827', '#5b21b6']
+          : ['#fecaca', '#fcd34d']
+      }
+      start={{x: 0, y: 0}}
+      end={{x: 1.5, y: 1}}
+      style={tw`w-full mx-auto relative overflow-hidden flex flex-col items-center justify-center pt-5`}> */}
     </LinearGradient>
   );
 };

@@ -21,7 +21,7 @@ const LinearChart = ({
       data={{
         labels: data
           .slice(data.length > 10 ? data.length - 10 : 0, data.length)
-          .map(item => item.xAxis),
+          .map(item => item.yAxis),
         datasets: [
           {
             data: data
@@ -30,13 +30,13 @@ const LinearChart = ({
           },
         ],
       }}
-      width={SIZES.width * 0.9}
-      height={SIZES.width * 0.8}
+      width={SIZES.width}
+      height={SIZES.width * 0.9}
       yAxisSuffix={ySuffix}
       xAxisLabel={xSuffix}
       fromNumber={maxLimit}
       fromZero
-      verticalLabelRotation={-90}
+      verticalLabelRotation={-45}
       xLabelsOffset={xOffset}
       yLabelsOffset={yOffset}
       chartConfig={{

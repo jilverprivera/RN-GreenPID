@@ -12,9 +12,9 @@ import {DarkTheme, LightTheme} from '../../config/LinearGradientColors';
 import {VariablesContext} from '../../context/VariablesContext';
 import {SIZES} from '../../constants';
 
-const GroundHumidity = () => {
+const WaterLevel = () => {
   const {tw, colorScheme} = useContext(ThemeContext);
-  const {groundHumidity} = useContext(VariablesContext);
+  const {waterLevel} = useContext(VariablesContext);
 
   return (
     <LinearGradient
@@ -22,19 +22,19 @@ const GroundHumidity = () => {
       start={{x: 0, y: 0}}
       end={{x: 1.5, y: 1}}
       style={tw`flex-1 w-full relative`}>
-      <Header title="Humedad de suelo" withBack={true} />
+      <Header title="Sistema de llenado" withBack={true} />
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={{...tw`w-full`, height: SIZES.width * 1.05}}>
         <View style={tw`flex flex-col items-center justify-center`}>
-          <ChartTitle title="Gráfica humedad de suelo" />
+          <ChartTitle title="Gráfica nivel de tanque" />
           <LinearChart
-            data={groundHumidity}
+            data={waterLevel}
             ySuffix="%"
             xSuffix="%"
             maxLimit={100}
-            yOffset={20}
+            yOffset={10}
             xOffset={20}
           />
         </View>
@@ -59,4 +59,4 @@ const GroundHumidity = () => {
   );
 };
 
-export default GroundHumidity;
+export default WaterLevel;
