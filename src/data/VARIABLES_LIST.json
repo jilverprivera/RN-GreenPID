@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Temperatura", 
+    "route": "TemperatureDetail",
+    "icon": "thermometer",
+    "color": ["#FFC75F","#FF3864","#FF6F91"]
+  },
+  {
+    "name": "Humedad relativa", 
+    "route": "RelativeDetail",
+    "icon": "mixcloud",
+    "color": ["#2AB7CA","#845EC2","#261447"]
+
+  },
+  {
+    "name": "Humedad de suelo", 
+    "route": "GroundDetail",
+    "icon": "seedling",
+    "color": ["#C08552","#514F59","#5E3023"]
+
+  },
+  {
+    "name": "Calidad del aire", 
+    "route": "AirQualityDetail",
+    "icon": "wind",
+    "color": ["#C4FCEF", "#2AB7CA","#4C3B4D"]
+
+  },
+  {
+    "name": "Sistema de llenado", 
+    "route": "WaterLevelDetail",
+    "icon": "water",
+    "color": ["#2AB7CA","#845EC2","#0A2463"]
+  }
+]

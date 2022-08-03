@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Conexión entre placa ESP32 y sensor DHT22",
+    "route": "TemperatureManual",
+    "tags": ["Esquema", "Conexiones"]
+  },
+  {
+      "name": "Conexión entre placa ESP32 y sensor MQ135",
+      "route": "AirQualityManual",
+      "tags": ["Esquema"]
+  },
+  {
+      "name": "Funcionamiento de sistema de riego",
+      "route": "IrrigationManual",
+      "tags": ["Esquema"]
+  }
+]

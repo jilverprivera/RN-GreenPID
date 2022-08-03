@@ -1,0 +1,69 @@
+[
+  {
+    "name": "Temperatura",
+    "variables": [
+      {
+        "name": "Setpoint de temperatura (°C)",
+        "value": "temperature_sp", 
+
+        "predefined": 33
+      },
+      {
+        "name": "Ganancia proporcional (Kp)",
+        "value": "kp",
+        "predefined": 603
+      },
+      {
+        "name": "Ganancia integral (Ki)",
+        "value": "ki",
+        "predefined": 14.2
+      },
+      {
+        "name": "Ganancia derivativa (Kd)",
+        "value": "kd",
+        "predefined": 4.6
+      }
+    ]
+  },
+  {
+    "name": "Humedad relativa",
+    "variables": [
+      {
+        "name": "Setpoint de alerta [% RH]",
+        "value": "relative_humidity_sp",
+        "predefined": 90
+      }
+    ]
+  },
+  {
+    "name": "Humedad de suelo",
+    "variables": [
+      {
+        "name": "Setpoint de alerta [%]",
+        "value": "ground_humidity_sp",
+        "predefined": 30
+      }
+    ]
+  },
+  {
+    "name": "Calidad de aire",
+    "variables": [
+      {
+        "name": "Setpoint de alerta [ppm]",
+        "value": "air_quality_sp",
+        "predefined": 1100
+      }
+    ]
+  },
+  {
+    "name": "Sistema de riego",
+    "variables": [
+      {
+        "name": "Humedad de suelo para apertura de válvula [%]",
+        "value": "irrigation_sp",
+        "predefined": 20
+      }
+    ]
+  }
+
+]

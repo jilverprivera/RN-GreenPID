@@ -1,0 +1,10 @@
+{
+    "temperature_sp": 33,
+    "kp": 603,
+    "ki": 14.2,
+    "kd": 4.6,
+    "relative_humidity_sp": 90,
+    "ground_humidity_sp": 30,
+    "air_quality_sp": 1100,
+    "irrigation_sp": 20
+}
