@@ -1,19 +1,29 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import SplashScreen from 'react-native-splash-screen';
+
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
-import StackNavigation from './src/navigation/StackNavigation';
+import StackNavigation from './src/navigation/Stack';
 
-import {AuthProvider, AppProvider} from './src/context/';
+import {AppProvider} from './src/context/AppContext';
+import {ThemeProvider} from './src/context/ThemeContext';
+import {VariablesProvider} from './src/context/VariablesContext';
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <NavigationContainer>
-      <AuthProvider>
-        <AppProvider>
-          <StackNavigation />
-        </AppProvider>
-      </AuthProvider>
+      <AppProvider>
+        <VariablesProvider>
+          <ThemeProvider>
+            <StackNavigation />
+          </ThemeProvider>
+        </VariablesProvider>
+      </AppProvider>
     </NavigationContainer>
   );
 };
