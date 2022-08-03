@@ -62,7 +62,7 @@ const ManualConfiguration = () => {
       start={{x: 0, y: 0}}
       end={{x: 1.5, y: 1}}
       style={tw`flex-1 flex bg-zinc-100 dark:bg-zinc-900 w-full flex-1 overflow-hidden relative`}>
-      <Header title="Control predeterminado" withBack={true} />
+      <Header title="Configuración manual" withBack={true} />
       <View style={tw`w-11/12 mx-auto`}>
         <StepIndicator
           customStyles={STEP_STYLES}
