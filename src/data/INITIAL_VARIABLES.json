@@ -1,8 +1,8 @@
 {
     "temperature_sp": 33,
-    "kp": 603,
-    "ki": 14.2,
-    "kd": 4.6,
+    "kp": 740,
+    "ki": 17.2,
+    "kd": 5.6,
     "relative_humidity_sp": 90,
     "ground_humidity_sp": 30,
     "air_quality_sp": 1100,

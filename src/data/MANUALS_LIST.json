@@ -1,17 +1,32 @@
 [
   {
+    "name": "¿Cómo funciona el prototipo?",
+    "route": "TemperatureManual",
+    "tags": ["Diagramas de flujos", "Explicación"]
+  },
+  {
+    "name": "Construcción de placa PCB para prototipo agroindustrial",
+    "route": "TemperatureManual",
+    "tags": ["Circuitos electrónicos", "Explicación"]
+  },
+  {
     "name": "Conexión entre placa ESP32 y sensor DHT22",
     "route": "TemperatureManual",
-    "tags": ["Esquema", "Conexiones"]
+    "tags": ["Conexión Física", "Explicación"]
   },
   {
       "name": "Conexión entre placa ESP32 y sensor MQ135",
       "route": "AirQualityManual",
-      "tags": ["Esquema"]
+      "tags": ["Conexión Física", "Explicación"]
   },
   {
       "name": "Funcionamiento de sistema de riego",
       "route": "IrrigationManual",
-      "tags": ["Esquema"]
+      "tags": ["Conexión Física", "Explicación"]
+  },
+  {
+      "name": "¿Cómo está implementada la comunicación entre el prototipo y la aplicación móvil?",
+      "route": "IrrigationManual",
+      "tags": ["Esquema visual", "Explicación"]
   }
 ]

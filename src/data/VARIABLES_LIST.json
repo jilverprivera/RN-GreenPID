@@ -1,35 +1,40 @@
 [
   {
     "name": "Temperatura", 
-    "route": "TemperatureDetail",
+    "route": "TemperatureScreen",
     "icon": "thermometer",
-    "color": ["#FFC75F","#FF3864","#FF6F91"]
+    "color": ["#FFC75F","#FF3864","#FF6F91"],
+    "label": "Encargado de leer y mantener el control PID"
   },
   {
     "name": "Humedad relativa", 
-    "route": "RelativeDetail",
+    "route": "RelativeScreen",
     "icon": "mixcloud",
-    "color": ["#2AB7CA","#845EC2","#261447"]
+    "color": ["#2AB7CA","#845EC2","#261447"],
+    "label": "Lectura sobre porcentaje de humedad dentro del prototipo."
 
   },
   {
     "name": "Humedad de suelo", 
-    "route": "GroundDetail",
+    "route": "GroundHumidityScreen",
     "icon": "seedling",
-    "color": ["#C08552","#514F59","#5E3023"]
+    "color": ["#C08552","#514F59","#5E3023"],
+    "label": "Encargado de nutrir el suelo con agua."
 
   },
   {
     "name": "Calidad del aire", 
-    "route": "AirQualityDetail",
+    "route": "AirQualityScreen",
     "icon": "wind",
-    "color": ["#C4FCEF", "#2AB7CA","#4C3B4D"]
+    "color": ["#C4FCEF", "#2AB7CA","#4C3B4D"],
+    "label": "Lectura sobre la calidad de aire dentro del prototipo."
 
   },
   {
     "name": "Sistema de llenado", 
-    "route": "WaterLevelDetail",
+    "route": "WaterLevelScreen",
     "icon": "water",
-    "color": ["#2AB7CA","#845EC2","#0A2463"]
+    "color": ["#2AB7CA","#845EC2","#0A2463"],
+    "label": "Encargado de activar el sistema de riego."
   }
 ]
