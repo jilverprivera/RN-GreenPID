@@ -6,7 +6,8 @@ const Paragraph = ({paragraph}) => {
   const {tw} = useContext(ThemeContext);
 
   return (
-    <Text style={tw`text-zinc-900 dark:text-zinc-100 leading-5 text-base my-2`}>
+    <Text
+      style={tw`text-neutral-900 dark:text-neutral-50 leading-5 text-base my-2`}>
       {paragraph}
     </Text>
   );

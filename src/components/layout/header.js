@@ -17,14 +17,14 @@ const Header = ({title, withBack}) => {
           onPress={() => goBack()}>
           <Icon
             size={24}
-            name="arrow-left"
+            name="angle-left"
             color={colorScheme === 'dark' ? '#FFF' : '#000'}
           />
         </TouchableOpacity>
       )}
 
       <Text
-        style={tw`text-zinc-900 dark:text-zinc-100 text-base tracking-wide font-medium`}>
+        style={tw`text-neutral-900 dark:text-neutral-50 text-base tracking-wide font-medium`}>
         {title}
       </Text>
     </View>

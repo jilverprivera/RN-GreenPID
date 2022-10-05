@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import {COLORS, FONTS, SIZES} from '../../constants';
+import {THEME} from '../../styles/Theme';
 
 const ConfigButton = ({title, iconName, route, color}) => {
   const {navigate} = useNavigation();
@@ -15,7 +15,7 @@ const ConfigButton = ({title, iconName, route, color}) => {
         </View>
         <Text style={STYLES.title}>{title}</Text>
       </View>
-      <Icon size={24} color={COLORS.black} name="arrow-right" />
+      <Icon size={24} color={THEME.COLORS.black} name="arrow-right" />
     </TouchableOpacity>
   );
 };
@@ -24,13 +24,13 @@ export default ConfigButton;
 
 const STYLES = StyleSheet.create({
   content: {
-    width: SIZES.width - SIZES.margin * 3,
+    width: THEME.SIZES.width - THEME.SIZES.margin * 3,
     height: 50,
     alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: SIZES.margin,
+    marginBottom: THEME.SIZES.margin,
   },
   wrapper: {
     flexDirection: 'row',
@@ -41,15 +41,15 @@ const STYLES = StyleSheet.create({
   iconWrapper: {
     width: 50,
     height: 50,
-    backgroundColor: COLORS.white,
+    backgroundColor: THEME.THEME.COLORS.white,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: SIZES.borders,
-    marginRight: SIZES.margin,
+    borderRadius: THEME.SIZES.borders,
+    marginRight: THEME.SIZES.margin,
   },
   title: {
-    color: COLORS.black,
-    fontSize: SIZES.body3,
-    fontFamily: FONTS.regular,
+    color: THEME.COLORS.black,
+    fontSize: THEME.SIZES.body3,
+    fontFamily: THEME.FONTS.regular,
   },
 });

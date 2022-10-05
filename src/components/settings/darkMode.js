@@ -7,7 +7,7 @@ const DarkMode = () => {
 
   return (
     <View style={tw`w-full flex flex-row items-center justify-between mt-2`}>
-      <Text style={tw`text-lg text-neutral-900 dark:text-zinc-100`}>
+      <Text style={tw`text-lg text-neutral-900 dark:text-neutral-50`}>
         Modo Oscuro
       </Text>
       <Switch

@@ -7,7 +7,7 @@ const Title = ({title, left}) => {
 
   return (
     <Text
-      style={tw`w-full text-center my-4 text-lg text-zinc-900 dark:text-zinc-100 font-semibold`}>
+      style={tw`w-full text-center my-4 text-lg text-neutral-900 dark:text-neutral-50 font-semibold`}>
       {title}
     </Text>
   );

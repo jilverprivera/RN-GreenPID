@@ -10,10 +10,10 @@ import Animated, {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {PanGestureHandler} from 'react-native-gesture-handler';
 
-import {COLORS, FONTS, SIZES} from '../../constants';
+import {THEME} from '../../styles/Theme';
 
 const LIST_ITEM_HEIGHT = 115;
-const TRANSLATEX_THRESHOLD = SIZES.width * 0.4;
+const TRANSLATEX_THRESHOLD = THEME.SIZES.width * 0.4;
 
 const ListItem = ({message, icon, date, type, id, onDismiss}) => {
   let noteDate = new Date(date);
@@ -23,7 +23,7 @@ const ListItem = ({message, icon, date, type, id, onDismiss}) => {
 
   const translateX = useSharedValue(0);
   const itemHeight = useSharedValue(LIST_ITEM_HEIGHT);
-  const marginVertical = useSharedValue(SIZES.margin / 2);
+  const marginVertical = useSharedValue(THEME.SIZES.margin / 2);
   const opacityContainer = useSharedValue(1);
 
   const panGesture = useAnimatedGestureHandler({
@@ -33,7 +33,7 @@ const ListItem = ({message, icon, date, type, id, onDismiss}) => {
     onEnd: () => {
       const shouldDismissed = translateX.value < TRANSLATEX_THRESHOLD;
       if (shouldDismissed) {
-        translateX.value = withTiming(-SIZES.width);
+        translateX.value = withTiming(-THEME.SIZES.width);
         itemHeight.value = withTiming(0);
         marginVertical.value = withTiming(0);
         opacityContainer.value = withTiming(0, undefined, isFinished => {
@@ -74,13 +74,13 @@ const ListItem = ({message, icon, date, type, id, onDismiss}) => {
               {
                 backgroundColor:
                   type === 'success'
-                    ? COLORS.secondary
+                    ? THEME.COLORS.secondary
                     : type === 'warning'
-                    ? COLORS.auxiliar_2
-                    : type === 'danger' && COLORS.auxiliar_4,
+                    ? THEME.COLORS.auxiliar_2
+                    : type === 'danger' && THEME.COLORS.auxiliar_4,
               },
             ]}>
-            <Icon size={32} color={COLORS.white} name={icon} />
+            <Icon size={32} color={THEME.COLORS.white} name={icon} />
           </View>
           <View style={STYLES.messageContent}>
             <Text style={STYLES.message}>{message}</Text>
@@ -89,7 +89,7 @@ const ListItem = ({message, icon, date, type, id, onDismiss}) => {
         </Animated.View>
       </PanGestureHandler>
       <Animated.View style={[rIconContainerStyle, STYLES.iconContainer]}>
-        <Icon name="trash-alt" color={COLORS.auxiliar_4} size={32} />
+        <Icon name="trash-alt" color={THEME.COLORS.auxiliar_4} size={32} />
       </Animated.View>
     </Animated.View>
   );
@@ -99,26 +99,26 @@ export default ListItem;
 
 const STYLES = StyleSheet.create({
   container: {
-    width: SIZES.width - SIZES.margin,
+    width: THEME.SIZES.width - THEME.SIZES.margin,
     alignSelf: 'center',
     alignItems: 'center',
     // borderWidth: 1,
     // flex: 1,
-    // marginBottom: SIZES.margin,
+    // marginBottom: THEME.SIZES.margin,
   },
   list: {
     // borderWidth: 1,
 
-    width: SIZES.width - SIZES.margin,
+    width: THEME.SIZES.width - THEME.SIZES.margin,
     alignSelf: 'center',
     height: LIST_ITEM_HEIGHT,
-    backgroundColor: COLORS.white,
-    borderRadius: SIZES.borders,
-    padding: SIZES.padding,
+    backgroundColor: THEME.COLORS.white,
+    borderRadius: THEME.SIZES.borders,
+    padding: THEME.SIZES.padding,
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    shadowColor: COLORS.black,
+    shadowColor: THEME.COLORS.black,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -134,21 +134,21 @@ const STYLES = StyleSheet.create({
     borderRadius: 35,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: SIZES.margin / 2,
+    marginRight: THEME.SIZES.margin / 2,
   },
   messageContent: {
-    width: SIZES.width - 70 * 2 + 7.5,
+    width: THEME.SIZES.width - 70 * 2 + 7.5,
   },
   message: {
-    color: COLORS.black,
-    fontFamily: FONTS.medium,
-    fontSize: SIZES.body2,
+    color: THEME.COLORS.black,
+    fontFamily: THEME.FONTS.medium,
+    fontSize: THEME.SIZES.body2,
   },
   date: {
-    color: COLORS.darkGray,
-    fontFamily: FONTS.regular,
-    fontSize: SIZES.body3,
-    marginTop: SIZES.margin / 2,
+    color: THEME.COLORS.darkGray,
+    fontFamily: THEME.FONTS.regular,
+    fontSize: THEME.SIZES.body3,
+    marginTop: THEME.SIZES.margin / 2,
   },
 
   iconContainer: {

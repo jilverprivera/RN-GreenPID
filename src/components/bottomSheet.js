@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {Text, View} from 'react-native';
 
-import {ThemeContext} from '../../context/ThemeContext';
-import {Message} from '../core';
-import PersonalLinks from '../PersonalLinks';
+import {ThemeContext} from '../context/ThemeContext';
+import {Message} from './core';
+import PersonalLinks from './PersonalLinks';
 
 const BottomSheet = () => {
   const {tw} = useContext(ThemeContext);
@@ -11,7 +11,7 @@ const BottomSheet = () => {
   return (
     <View style={tw`mt-3 flex-1`}>
       <Text
-        style={tw`text-neutral-900 dark:text-zinc-100 leading-7 text-lg mb-3 tracking-wide text-center`}>
+        style={tw`text-neutral-900 dark:text-neutral-50 leading-7 text-lg mb-3 tracking-wide text-center`}>
         Información
       </Text>
       <Message message="¡Hola! Soy Jilver Pacheco, estudiante de ingeniería electrónica y creador de GreenPID." />

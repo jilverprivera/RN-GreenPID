@@ -7,7 +7,7 @@ const Message = ({message}) => {
   const {tw} = useContext(ThemeContext);
   return (
     <Text
-      style={tw`text-neutral-900 dark:text-zinc-100 leading-7 text-sm mb-4 tracking-wide`}>
+      style={tw`text-neutral-900 dark:text-neutral-50 leading-7 text-sm mb-4 tracking-wide`}>
       {message}
     </Text>
   );

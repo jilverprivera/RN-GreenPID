@@ -11,7 +11,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {SIZES} from '../../constants';
+import {THEME} from '../../styles/Theme';
 import {ThemeContext} from '../../context/ThemeContext';
 
 const PinchImage = Animated.createAnimatedComponent(Image);
@@ -38,13 +38,13 @@ const AnimatedImage = ({image}) => {
       transform: [
         {translateX: focalX.value},
         {translateY: focalY.value},
-        {translateX: -SIZES.width / 2},
-        {translateY: -SIZES.height / 2},
+        {translateX: -THEME.SIZES.width / 2},
+        {translateY: -THEME.SIZES.height / 2},
         {scale: scale.value},
         {translateX: -focalX.value},
         {translateY: -focalY.value},
-        {translateX: SIZES.width / 2},
-        {translateY: SIZES.height / 2},
+        {translateX: THEME.SIZES.width / 2},
+        {translateY: THEME.SIZES.height / 2},
       ],
     };
   });
@@ -56,7 +56,7 @@ const AnimatedImage = ({image}) => {
           style={[
             tw`w-full self-center border-2 `,
             rStyle,
-            {height: SIZES.width, resizeMode: 'contain'},
+            {height: THEME.SIZES.width, resizeMode: 'contain'},
           ]}
           source={image}
         />
@@ -66,12 +66,3 @@ const AnimatedImage = ({image}) => {
 };
 
 export default AnimatedImage;
-
-// const STYLES = StyleSheet.create({
-//   image: {
-//     width: SIZES.width - SIZES.margin * 2,
-//     height: SIZES.width - SIZES.margin * 2,
-//     resizeMode: 'contain',
-//     alignSelf: 'center',
-//   },
-// });
