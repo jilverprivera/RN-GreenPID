@@ -8,7 +8,6 @@ export const saveData = async (id, email, userName) => {
       .collection(`Users/${id}/data`)
       .add({uid: id, userName: userName, email: email});
   } catch (err) {
-    console.warn('Error', err);
     Alert.alert(
       'Ops...',
       'Hubo un error guardando tu información en la base de datos.',

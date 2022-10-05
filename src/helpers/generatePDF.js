@@ -2,14 +2,14 @@ import {Alert} from 'react-native';
 import reactNativeHtmlToPdf from 'react-native-html-to-pdf';
 import FileViewer from 'react-native-file-viewer';
 
-import {templatePDF} from '../config/templatePDF';
+import PDFTemplate from '../utils/PDFTemplate';
 
 import {isPermitted} from './systemPermissions';
 
 export const generatePDF = async (data, fileTitle, units) => {
   if (await isPermitted) {
     let options = {
-      html: templatePDF(data, fileTitle, units),
+      html: PDFTemplate(data, fileTitle, units),
       fileName: fileTitle,
       directory: 'files',
     };
