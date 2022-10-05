@@ -84,6 +84,12 @@
 		<string>AnekTamil-Medium.ttf</string>
 		<string>AnekTamil-Regular.ttf</string>
 		<string>AnekTamil-SemiBold.ttf</string>
+		<string>MavenPro-Bold.ttf</string>
+		<string>MavenPro-Medium.ttf</string>
+		<string>MavenPro-Regular.ttf</string>
+		<string>MavenPro-SemiBold.ttf</string>
+		<string>MavenPro.ttf</string>
+		<string>Rubik-VariableFont.ttf</string>
 	</array>
 </dict>
 </plist>
