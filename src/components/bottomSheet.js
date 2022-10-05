@@ -1,19 +1,15 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Text, View} from 'react-native';
 
-import {ThemeContext} from '../context/ThemeContext';
 import {Message} from './core';
 import PersonalLinks from './PersonalLinks';
 
-const BottomSheet = () => {
-  const {tw} = useContext(ThemeContext);
+import {layout} from '../styles/Layout';
 
+const BottomSheet = () => {
   return (
-    <View style={tw`mt-3 flex-1`}>
-      <Text
-        style={tw`text-neutral-900 dark:text-neutral-50 leading-7 text-lg mb-3 tracking-wide text-center`}>
-        Información
-      </Text>
+    <View>
+      <Text style={layout.bottomSheetTitle}>Información</Text>
       <Message message="¡Hola! Soy Jilver Pacheco, estudiante de ingeniería electrónica y creador de GreenPID." />
       <Message
         message="GreenPID es una alternativa educativa para los estudiantes del
