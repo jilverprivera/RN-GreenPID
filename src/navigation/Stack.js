@@ -3,12 +3,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {AppContext} from '../context/AppContext';
 
-import LoadingScreen from '../screens/Loading';
 import {
   stackPrivateRoutes,
   stackPublicRoutes,
   stackRoutes,
 } from '../routes/StackRoutes';
+
+import LoadingScreen from '../screens/Loading';
 
 const Stack = createStackNavigator();
 
@@ -25,28 +26,16 @@ const StackNavigation = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={status === 'authenticated' ? 'Tabs' : 'Initial'}>
+      initialRouteName={status === 'authenticated' ? 'Drawer' : 'SignIn'}>
       {status === 'authenticated'
-        ? stackPrivateRoutes.map((screen, i) => (
-            <Stack.Screen
-              key={i}
-              name={screen.route}
-              component={screen.component}
-            />
+        ? stackPrivateRoutes.map((_, i) => (
+            <Stack.Screen key={i} name={_.route} component={_.component} />
           ))
-        : stackPublicRoutes.map((screen, i) => (
-            <Stack.Screen
-              key={i}
-              name={screen.route}
-              component={screen.component}
-            />
+        : stackPublicRoutes.map((_, i) => (
+            <Stack.Screen key={i} name={_.route} component={_.component} />
           ))}
-      {stackRoutes.map((screen, i) => (
-        <Stack.Screen
-          key={i}
-          name={screen.route}
-          component={screen.component}
-        />
+      {stackRoutes.map((_, i) => (
+        <Stack.Screen key={i} name={_.route} component={_.component} />
       ))}
     </Stack.Navigator>
   );

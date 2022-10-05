@@ -1,0 +1,101 @@
+[
+  {
+    "title":"Temperatura",
+    "shortName": "Temperatura",
+    "icon": "thermometer",
+    "items": [
+      {
+        "path": "/sensors/temperature_1",
+        "name":"Temperatura 1",
+        "sensor": "Sensor 1 (Pin 14)",
+        "suffix": "°C",
+        "limit": 80,
+        "yOffset": 20,
+        "xOffset": 20
+      },
+      {
+        "path": "/sensors/temperature_2",
+        "name":"Temperatura 2",
+        "sensor": "Sensor 2 (Pin 22)",
+        "suffix": "°C",
+        "limit": 80,
+        "yOffset": 20,
+        "xOffset": 20
+      }
+    ]
+  },
+  {
+    "title":"Humedad Relativa",
+    "shortName": "Hum. relativa",
+    "icon": "mixcloud",
+    "items": [
+      {
+        "path": "/sensors/relative_humidity_1",
+        "name":"Humedad Relativa 1",
+        "sensor": "Sensor 1 (Pin 14)",
+        "suffix": "%",
+        "limit": 100,
+        "yOffset": 20,
+        "xOffset": 20
+      },
+      {
+        "path": "/sensors/relative_humidity_2",
+        "name":"Humedad Relativa 2",
+        "sensor": "Sensor 2 (Pin 22)",
+        "suffix": "%",
+        "limit": 100,
+        "yOffset": 20,
+        "xOffset": 20
+      }
+    ]
+  },
+  {
+    "title":"Calidad de aire",
+    "shortName": "Calidad aire",
+    "icon": "wind",
+    "items": [
+      {
+        "path": "/sensors/air_quality",
+        "name":"Calidad de aire",
+        "sensor": "Pin 34",
+        "suffix": " ppm",
+        "limit": 1100,
+        "yOffset": 10,
+        "xOffset": 20
+      }
+    ]
+  },
+  {
+    "title":"Humedad de suelo",
+    "shortName": "Hum. suelo",
+    "icon": "seedling",
+    "items": [
+      {
+        "path": "/sensors/ground_humidity",
+        "name":"Humedad de suelo",
+        "sensor": "Pin 33",
+        "suffix": "%",
+        "limit": 100,
+        "yOffset": 20,
+        "xOffset": 20
+      }
+    ]
+  },
+  {
+    "title":"Nivel de tanque",
+    "shortName": "Nivel tanque",
+    "icon": "water",
+    "items": [
+      {
+        "path": "/sensors/water_level",
+        "name":"Nivel de tanque",
+        "sensor": "Pin 36",
+        "suffix": "%",
+        "limit": 100,
+        "yOffset": 20,
+        "xOffset": 20
+      }
+    ]
+  }
+  
+]
