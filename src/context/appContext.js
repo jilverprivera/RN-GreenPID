@@ -142,6 +142,7 @@ export const AppProvider = ({children}) => {
   };
 
   const setManualVariables = async obj => {
+    console.log(obj);
     await updateVariables(obj);
   };
 
