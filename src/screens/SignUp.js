@@ -32,14 +32,15 @@ const SignUp = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={tw`flex-1 w-full bg-gray-100 dark:bg-neutral-800`}>
+    <SafeAreaView style={tw`flex-1 w-full bg-gray-100 dark:bg-neutral-900`}>
       <View
         style={tw`w-11/12 mx-auto flex flex-col items-center justify-center mt-16`}>
-        <Text style={tw`font-bold text-3xl text-zinc-900 dark:text-zinc-100`}>
+        <Text
+          style={tw`font-bold text-3xl text-neutral-900 dark:text-neutral-50`}>
           Registro
         </Text>
         <Text
-          style={tw`font-semibold text-lg text-zinc-900 dark:text-zinc-100 mt-2`}>
+          style={tw`font-semibold text-lg text-neutral-900 dark:text-neutral-50 mt-2`}>
           Crea tu cuenta nueva
         </Text>
       </View>
@@ -70,9 +71,9 @@ const SignUp = ({navigation}) => {
         {!isLoading && (
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('signInScreen')}>
+            onPress={() => navigation.navigate('SignIn')}>
             <Text
-              style={tw`text-sm text-zinc-700 dark:text-zinc-400 text-base font-medium`}>
+              style={tw`text-sm text-neutral-700 dark:text-neutral-400 text-base font-medium`}>
               ¿Ya tienes cuenta?, Inicia sesión
             </Text>
           </TouchableOpacity>
@@ -86,7 +87,7 @@ const SignUp = ({navigation}) => {
             onPress={() => signUp()}
             disabled={isLoading}>
             <Text
-              style={tw`text-base font-semibold text-zinc-100 tracking-wide`}>
+              style={tw`text-base font-semibold text-neutral-50 tracking-wide`}>
               Crear cuenta
             </Text>
           </TouchableOpacity>

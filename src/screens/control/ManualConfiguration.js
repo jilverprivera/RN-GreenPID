@@ -2,16 +2,17 @@ import React, {useContext, useState} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
+  SafeAreaView,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import LinearGradient from 'react-native-linear-gradient';
 import StepIndicator from 'react-native-step-indicator';
 import Swiper from 'react-native-swiper';
 
 import {AppContext} from '../../context/AppContext';
+import {ThemeContext} from '../../context/ThemeContext';
 import {useForm} from '../../hooks/useForm';
 
 import {Input} from '../../components/core';
@@ -21,13 +22,11 @@ import INITIAL_VARIABLES from '../../data/INITIAL_VARIABLES.json';
 import VARIABLES_VALUES from '../../data/VARIABLES_VALUES.json';
 import VARIABLES_LABELS from '../../data/VARIABLES_LABELS.json';
 
-import {ThemeContext} from '../../context/ThemeContext';
-import {DarkTheme, LightTheme} from '../../config/LinearGradientColors';
-import {STEP_STYLES} from '../../styles/STEP_STYLES';
+import stepStyles from '../../utils/stepStyles';
 
 const ManualConfiguration = () => {
   const navigation = useNavigation();
-  const {tw, colorScheme} = useContext(ThemeContext);
+  const {tw} = useContext(ThemeContext);
 
   const {setManualVariables} = useContext(AppContext);
   const {form, onChange} = useForm(INITIAL_VARIABLES);
@@ -57,15 +56,11 @@ const ManualConfiguration = () => {
   };
 
   return (
-    <LinearGradient
-      colors={colorScheme === 'dark' ? DarkTheme : LightTheme}
-      start={{x: 0, y: 0}}
-      end={{x: 1.5, y: 1}}
-      style={tw`flex-1 flex bg-zinc-100 dark:bg-zinc-900 w-full flex-1 overflow-hidden relative`}>
+    <SafeAreaView style={tw`flex-1 bg-neutral-50 dark:bg-neutral-900`}>
       <Header title="Configuración manual" withBack={true} />
       <View style={tw`w-11/12 mx-auto`}>
         <StepIndicator
-          customStyles={STEP_STYLES}
+          customStyles={stepStyles}
           currentPosition={currentPosition}
           onPress={onStepPress}
           labels={VARIABLES_LABELS}
@@ -81,7 +76,7 @@ const ManualConfiguration = () => {
         {VARIABLES_VALUES.map(item => (
           <View key={item.name} style={tw`flex-1 w-11/12 mx-auto mt-4`}>
             <Text
-              style={tw`text-lg text-zinc-900 dark:text-zinc-100 font-semibold text-center mb-5`}>
+              style={tw`text-lg text-neutral-900 dark:text-neutral-50 font-semibold text-center mb-5`}>
               {item.name}
             </Text>
             <KeyboardAvoidingView
@@ -90,7 +85,7 @@ const ManualConfiguration = () => {
                 return (
                   <Input
                     key={i}
-                    text={item.name}
+                    text={input.name}
                     placeholder={String(input.predefined)}
                     keyboardType="decimal-pad"
                     onChange={onChange}
@@ -105,7 +100,7 @@ const ManualConfiguration = () => {
                 style={tw`bg-teal-500 dark:bg-indigo-600 flex items-center justify-center mt-10 py-5 rounded-xl`}
                 onPress={() => handleUpdateVariables()}>
                 <Text
-                  style={tw`text-base tracking-wider font-semibold text-zinc-100`}>
+                  style={tw`text-base tracking-wider font-semibold text-neutral-50`}>
                   Aplicar cambios
                 </Text>
               </TouchableOpacity>
@@ -113,7 +108,7 @@ const ManualConfiguration = () => {
           </View>
         ))}
       </Swiper>
-    </LinearGradient>
+    </SafeAreaView>
   );
 };
 

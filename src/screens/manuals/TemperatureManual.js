@@ -17,19 +17,21 @@ const TemperatureManual = ({route}) => {
   return (
     <>
       <StatusBar hidden={true} />
-      <View style={tw`flex-1 w-full bg-white dark:bg-zinc-900`}>
+      <View style={tw`flex-1 w-full bg-neutral-50 dark:bg-neutral-900`}>
         <Header withBack={true} title="" />
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={tw`flex-1 w-11/12 mx-auto`}>
           <View style={tw`flex flex-col items-center justify-center`}>
             <Text
-              style={tw`text-zinc-900 dark:text-zinc-100 text-lg font-semibold text-center`}>
+              style={tw`text-neutral-900 dark:text-neutral-50 text-lg font-semibold text-center`}>
               {name}
             </Text>
             <View style={tw`my-2 flex flex-row items-center justify-center`}>
               {tags.map((tag, i) => (
-                <Text key={i} style={tw`text-zinc-700 dark:text-zinc-200 mx-2`}>
+                <Text
+                  key={i}
+                  style={tw`text-neutral-700 dark:text-neutral-200 mx-2`}>
                   {tag}
                 </Text>
               ))}
