@@ -7,6 +7,7 @@ export const THEME = {
     primary: '#DCE3EA',
     secondary: '#1E1E1E',
     light: '#FFFFFF',
+    danger: '#EF4444',
   },
   FONTS: {
     regular: 'MavenPro-Regular',

@@ -9,16 +9,17 @@ import {
   View,
 } from 'react-native';
 import {AppContext} from '../context/AppContext';
-import {ThemeContext} from '../context/ThemeContext';
 import {useForm} from '../hooks/useForm';
 
 import {Input} from '../components/core';
 
 import {signUpValidator} from '../helpers/authValidator';
+import {layout} from '../styles/Layout';
+import {auth} from '../styles/Auth';
+import {core} from '../styles/Core';
+import {THEME} from '../styles/Theme';
 
 const SignUp = ({navigation}) => {
-  const {tw, colorScheme} = useContext(ThemeContext);
-
   const {StartRegisterWithEmailPasswordAndName, isLoading} =
     useContext(AppContext);
   const {form, onChange} = useForm({name: '', email: '', password: ''});
@@ -32,20 +33,13 @@ const SignUp = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={tw`flex-1 w-full bg-gray-100 dark:bg-neutral-900`}>
-      <View
-        style={tw`w-11/12 mx-auto flex flex-col items-center justify-center mt-16`}>
-        <Text
-          style={tw`font-bold text-3xl text-neutral-900 dark:text-neutral-50`}>
-          Registro
-        </Text>
-        <Text
-          style={tw`font-semibold text-lg text-neutral-900 dark:text-neutral-50 mt-2`}>
-          Crea tu cuenta nueva
-        </Text>
+    <SafeAreaView style={layout.container}>
+      <View style={auth.titleContainer}>
+        <Text style={auth.title}>Registro</Text>
+        <Text style={auth.subTitle}>Crea tu cuenta nueva</Text>
       </View>
       <KeyboardAvoidingView
-        style={tw`mt-10 w-11/12 mx-auto mb-4`}
+        style={auth.inputContainer}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <Input
           placeholder="Ingresa tu nombre"
@@ -72,31 +66,22 @@ const SignUp = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => navigation.navigate('SignIn')}>
-            <Text
-              style={tw`text-sm text-neutral-700 dark:text-neutral-400 text-base font-medium`}>
-              ¿Ya tienes cuenta?, Inicia sesión
-            </Text>
+            <Text style={auth.text}>¿Ya tienes cuenta?, Inicia sesión</Text>
           </TouchableOpacity>
         )}
       </KeyboardAvoidingView>
       {!isLoading ? (
-        <View style={tw`w-11/12 mx-auto`}>
+        <View>
           <TouchableOpacity
             activeOpacity={0.8}
-            style={tw`p-4 border-2 items-center justify-center bg-sky-600 dark:bg-violet-700 rounded-xl mb-4`}
+            style={core.changesButton}
             onPress={() => signUp()}
             disabled={isLoading}>
-            <Text
-              style={tw`text-base font-semibold text-neutral-50 tracking-wide`}>
-              Crear cuenta
-            </Text>
+            <Text style={core.changesText}>Crear cuenta</Text>
           </TouchableOpacity>
         </View>
       ) : (
-        <ActivityIndicator
-          size="large"
-          color={colorScheme === 'dark' ? '#FFF' : '#000'}
-        />
+        <ActivityIndicator size="large" color={THEME.COLORS.secondary} />
       )}
     </SafeAreaView>
   );

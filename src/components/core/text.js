@@ -1,16 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Text} from 'react-native';
 
-import {ThemeContext} from '../../context/ThemeContext';
+import {layout} from '../../styles/Layout';
 
 const Message = ({message}) => {
-  const {tw} = useContext(ThemeContext);
-  return (
-    <Text
-      style={tw`text-neutral-900 dark:text-neutral-50 leading-7 text-sm mb-4 tracking-wide`}>
-      {message}
-    </Text>
-  );
+  return <Text style={layout.text}>{message}</Text>;
 };
 
 export default Message;

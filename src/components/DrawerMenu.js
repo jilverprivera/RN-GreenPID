@@ -42,7 +42,7 @@ const DrawerMenu = () => {
         <View style={layout.bottomDrawerContent}>
           <MenuIcon icon="project-diagram" route="Home" />
           <MenuIcon icon="readme" route="Information" />
-          <MenuIcon icon="cogs" route="Home" />
+          <MenuIcon icon="cogs" route="Settings" />
         </View>
       </View>
     </DrawerContentScrollView>

@@ -27,11 +27,7 @@ const ProcessVariables = () => {
         title="Constante derivativa (KD)"
         variable={variables.kd}
       />
-      <ProcessVariablesCard
-        title="Setpoint Temperatura"
-        variable={variables.temperature_sp}
-        units="°C"
-      />
+
       <ProcessVariablesCard
         title="Activación bomba agua (Hum. suelo)"
         variable={variables.ground_humidity_sp}

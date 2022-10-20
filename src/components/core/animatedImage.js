@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Image} from 'react-native';
 import {
   GestureHandlerRootView,
@@ -12,12 +12,11 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {THEME} from '../../styles/Theme';
-import {ThemeContext} from '../../context/ThemeContext';
+import {core} from '../../styles/Core';
 
 const PinchImage = Animated.createAnimatedComponent(Image);
 
 const AnimatedImage = ({image}) => {
-  const {tw} = useContext(ThemeContext);
   const scale = useSharedValue(1);
   const focalX = useSharedValue(0);
   const focalY = useSharedValue(0);
@@ -50,16 +49,9 @@ const AnimatedImage = ({image}) => {
   });
 
   return (
-    <GestureHandlerRootView style={tw`flex-1 z-50`}>
+    <GestureHandlerRootView style={core.animatedImageContainer}>
       <PinchGestureHandler onGestureEvent={pinchHandler}>
-        <PinchImage
-          style={[
-            tw`w-full self-center border-2 `,
-            rStyle,
-            {height: THEME.SIZES.width, resizeMode: 'contain'},
-          ]}
-          source={image}
-        />
+        <PinchImage style={[core.animatedImage, rStyle]} source={image} />
       </PinchGestureHandler>
     </GestureHandlerRootView>
   );

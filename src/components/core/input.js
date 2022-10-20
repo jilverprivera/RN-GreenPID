@@ -1,7 +1,7 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Text, TextInput, View} from 'react-native';
 
-import {ThemeContext} from '../../context/ThemeContext';
+import {core} from '../../styles/Core';
 
 const Input = ({
   text,
@@ -11,18 +11,12 @@ const Input = ({
   secureText,
   placeholder,
 }) => {
-  const {tw, colorScheme} = useContext(ThemeContext);
   return (
-    <View style={tw`w-full mb-4`}>
-      {text && (
-        <Text
-          style={tw`w-full text-base font-normal text-neutral-900 dark:text-neutral-50 mb-2`}>
-          {text}
-        </Text>
-      )}
+    <View style={core.inputContent}>
+      {text && <Text style={core.inputText}>{text}</Text>}
       <TextInput
-        style={tw`w-full p-4 bg-neutral-50 dark:bg-neutral-800 rounded-xl text-base text-neutral-900 dark:text-neutral-50`}
-        placeholderTextColor={colorScheme === 'dark' ? '#FFF' : '#DDD'}
+        style={core.input}
+        placeholderTextColor={'#525252'}
         placeholder={placeholder}
         secureTextEntry={secureText}
         keyboardType={keyboardType}

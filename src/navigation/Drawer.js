@@ -10,6 +10,9 @@ import HomeScreen from '../screens/HomeScreen';
 import {layout} from '../styles/Layout';
 import InformationScreen from '../screens/InformationScreen';
 import DetailScreen from '../screens/DetailScreen';
+import SettingScreen from '../screens/SettingScreen';
+import ManualControlScreen from '../screens/ManualControlScreen';
+import PredeterminatedControlScreen from '../screens/PredeterminatedControlScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -52,6 +55,17 @@ const DrawerNavigator = () => {
         </Drawer.Screen>
         <Drawer.Screen name="Detail">
           {props => <DetailScreen {...props} animated={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Settings">
+          {props => <SettingScreen {...props} animated={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="ManualControl">
+          {props => <ManualControlScreen {...props} animated={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="PredeterminatedControl">
+          {props => (
+            <PredeterminatedControlScreen {...props} animated={animatedStyle} />
+          )}
         </Drawer.Screen>
       </Drawer.Navigator>
     </View>

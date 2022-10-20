@@ -12,13 +12,15 @@ import {
   StatusBar,
 } from 'react-native';
 import {AppContext} from '../context/AppContext';
-import {ThemeContext} from '../context/ThemeContext';
 import {useForm} from '../hooks/useForm';
 
 import {Input} from '../components/core';
+import {layout} from '../styles/Layout';
+import {auth} from '../styles/Auth';
+import {core} from '../styles/Core';
+import {THEME} from '../styles/Theme';
 
 const SignIn = ({navigation}) => {
-  const {tw, colorScheme} = useContext(ThemeContext);
   const {StartLoginWithEmailAndPassword, isLoading} = useContext(AppContext);
 
   const {form, onChange} = useForm({email: '', password: ''});
@@ -54,20 +56,13 @@ const SignIn = ({navigation}) => {
   return (
     <>
       <StatusBar hidden={true} />
-      <SafeAreaView style={tw`flex-1 w-full bg-gray-100 dark:bg-neutral-900`}>
-        <View
-          style={tw`w-11/12 mx-auto flex flex-col items-center justify-center mt-16`}>
-          <Text
-            style={tw`font-bold text-3xl text-neutral-900 dark:text-neutral-50`}>
-            Bienvenido de nuevo
-          </Text>
-          <Text
-            style={tw`font-semibold text-lg text-neutral-900 dark:text-neutral-50 mt-2`}>
-            Ingresa a tu cuenta
-          </Text>
+      <SafeAreaView style={layout.container}>
+        <View style={auth.titleContainer}>
+          <Text style={auth.title}>Bienvenido de nuevo</Text>
+          <Text style={auth.subTitle}>Ingresa a tu cuenta</Text>
         </View>
         <KeyboardAvoidingView
-          style={tw`mt-10 w-11/12 mx-auto mb-4`}
+          style={auth.inputContainer}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <Input
             placeholder="Ingresa tu correo"
@@ -87,43 +82,37 @@ const SignIn = ({navigation}) => {
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => navigation.navigate('SignUp')}>
-              <Text
-                style={tw`text-sm text-neutral-700 dark:text-neutral-400 text-base font-medium`}>
-                ¿No tienes cuenta?
-              </Text>
+              <Text style={{...auth.text}}>¿No tienes cuenta?</Text>
             </TouchableOpacity>
           )}
         </KeyboardAvoidingView>
         {!isLoading ? (
-          <View style={tw`w-11/12 mx-auto`}>
+          <View>
             <TouchableOpacity
               activeOpacity={0.8}
-              style={tw`p-4 items-center justify-center bg-sky-600 dark:bg-violet-700 rounded-xl mb-4`}
+              style={{
+                ...core.changesButton,
+                marginBottom: THEME.SIZES.margin / 2,
+              }}
               onPress={() => signIn(email, password)}
               disabled={isLoading}>
-              <Text
-                style={tw`text-base font-semibold text-neutral-50 tracking-wide`}>
-                Ingresar
-              </Text>
+              <Text style={core.changesText}>Ingresar</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              activeOpacity={0.7}
-              style={tw`p-4 border-2 items-center justify-center border-2 border-sky-600 dark:border-violet-700 rounded-xl`}
+              activeOpacity={0.8}
+              style={{
+                ...core.changesButton,
+                marginBottom: THEME.SIZES.margin / 2,
+              }}
               onPress={() =>
                 StartLoginWithEmailAndPassword('test@admin.com', '123456789')
               }
               disabled={isLoading}>
-              <Text
-                style={tw`text-base font-semibold text-sky-600 dark:text-violet-600 tracking-wide`}>
-                Ingresar con cuenta UDI
-              </Text>
+              <Text style={core.changesText}>Ingresar [TEST]</Text>
             </TouchableOpacity>
           </View>
         ) : (
-          <ActivityIndicator
-            size="large"
-            color={colorScheme === 'dark' ? '#FFF' : '#000'}
-          />
+          <ActivityIndicator size="large" color={THEME.COLORS.secondary} />
         )}
       </SafeAreaView>
     </>

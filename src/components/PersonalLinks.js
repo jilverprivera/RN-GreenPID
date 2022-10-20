@@ -1,26 +1,22 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Linking, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import {ThemeContext} from '../context/ThemeContext';
-
 import NETWORKS from '../data/NETWORKS.json';
 
+import {THEME} from '../styles/Theme';
+import {core} from '../styles/Core';
+
 const PersonalLinks = () => {
-  const {tw, colorScheme} = useContext(ThemeContext);
   return (
-    <View style={tw`flex flex-row`}>
+    <View style={core.linkContainer}>
       {NETWORKS.map((item, index) => (
         <TouchableOpacity
           activeOpacity={0.7}
-          style={tw`mr-5 mt-2`}
+          style={core.linkIcon}
           key={index}
           onPress={() => Linking.openURL(item.url)}>
-          <Icon
-            name={item.iconName}
-            size={32}
-            color={colorScheme === 'dark' ? '#FFF' : '#000'}
-          />
+          <Icon name={item.iconName} size={32} color={THEME.COLORS.secondary} />
         </TouchableOpacity>
       ))}
     </View>

@@ -3,35 +3,24 @@
     "name": "Temperatura",
     "variables": [
       {
-        "name": "Setpoint de temperatura (°C)",
+        "name": "Setpoint Temperatura (°C)",
         "value": "temperature_sp", 
-
-        "predefined": 33
+        "predefined": "33"
       },
       {
-        "name": "Ganancia proporcional (Kp)",
+        "name": "Constante Proporcional (KP)",
         "value": "kp",
-        "predefined": 603
+        "predefined": "740"
       },
       {
-        "name": "Ganancia integral (Ki)",
+        "name": "Constante Integral (KI)",
         "value": "ki",
-        "predefined": 14.2
+        "predefined": "17.2"
       },
       {
-        "name": "Ganancia derivativa (Kd)",
+        "name": "Constante Derivativa (KD)",
         "value": "kd",
-        "predefined": 4.6
-      }
-    ]
-  },
-  {
-    "name": "Humedad relativa",
-    "variables": [
-      {
-        "name": "Setpoint de alerta [% RH]",
-        "value": "relative_humidity_sp",
-        "predefined": 90
+        "predefined": "5.6"
       }
     ]
   },
@@ -39,19 +28,9 @@
     "name": "Humedad de suelo",
     "variables": [
       {
-        "name": "Setpoint de alerta [%]",
+        "name": "Activación de bomba de agua [%]",
         "value": "ground_humidity_sp",
-        "predefined": 30
-      }
-    ]
-  },
-  {
-    "name": "Calidad de aire",
-    "variables": [
-      {
-        "name": "Setpoint de alerta [ppm]",
-        "value": "air_quality_sp",
-        "predefined": 1100
+        "predefined": "30"
       }
     ]
   },
@@ -59,9 +38,9 @@
     "name": "Sistema de riego",
     "variables": [
       {
-        "name": "Humedad de suelo para apertura de válvula [%]",
+        "name": "Desactivación de bomba de agua [%]",
         "value": "irrigation_sp",
-        "predefined": 20
+        "predefined": "20"
       }
     ]
   }

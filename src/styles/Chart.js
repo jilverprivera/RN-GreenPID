@@ -68,12 +68,7 @@ export const chart = StyleSheet.create({
     justifyContent: 'center',
   },
   extraInformation: {
-    // width: THEME.SIZES.width,
     paddingHorizontal: 16,
-    // alignSelf: 'center',
-    // alignItems: 'flex-start',
-    // flexDirection: 'column',
-    // justifyContent: 'space-between',
   },
   valueText: {
     fontSize: THEME.SIZES.heading2,

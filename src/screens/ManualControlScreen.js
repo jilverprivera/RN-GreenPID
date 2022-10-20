@@ -2,40 +2,32 @@ import React, {useContext, useState} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
-  SafeAreaView,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import StepIndicator from 'react-native-step-indicator';
+import Animated from 'react-native-reanimated';
 import Swiper from 'react-native-swiper';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import {AppContext} from '../../context/AppContext';
-import {ThemeContext} from '../../context/ThemeContext';
-import {useForm} from '../../hooks/useForm';
+import {AppContext} from '../context/AppContext';
+import {useForm} from '../hooks/useForm';
 
-import {Input} from '../../components/core';
-import Header from '../../components/layout/header';
+import ScreenTitle from '../components/ScreenTitle';
+import {Input} from '../components/core';
 
-import INITIAL_VARIABLES from '../../data/INITIAL_VARIABLES.json';
-import VARIABLES_VALUES from '../../data/VARIABLES_VALUES.json';
-import VARIABLES_LABELS from '../../data/VARIABLES_LABELS.json';
+import INITIAL_VARIABLES from '../data/INITIAL_VARIABLES.json';
+import VARIABLES_VALUES from '../data/VARIABLES_VALUES.json';
 
-import stepStyles from '../../utils/stepStyles';
+import {THEME} from '../styles/Theme';
+import {layout} from '../styles/Layout';
+import {core} from '../styles/Core';
 
-const ManualConfiguration = () => {
-  const navigation = useNavigation();
-  const {tw} = useContext(ThemeContext);
-
+const ManualControlScreen = ({navigation, route, animated}) => {
   const {setManualVariables} = useContext(AppContext);
   const {form, onChange} = useForm(INITIAL_VARIABLES);
 
   const [currentPosition, setCurrentPosition] = useState(0);
-
-  const onStepPress = position => {
-    setCurrentPosition(position);
-  };
 
   const handleUpdateVariables = () => {
     try {
@@ -56,16 +48,15 @@ const ManualConfiguration = () => {
   };
 
   return (
-    <SafeAreaView style={tw`flex-1 bg-neutral-50 dark:bg-neutral-900`}>
-      <Header title="Configuración manual" withBack={true} />
-      <View style={tw`w-11/12 mx-auto`}>
-        <StepIndicator
-          customStyles={stepStyles}
-          currentPosition={currentPosition}
-          onPress={onStepPress}
-          labels={VARIABLES_LABELS}
-        />
-      </View>
+    <Animated.View style={{...animated, ...layout.container}}>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={layout.toggleDrawer}
+        onPress={() => navigation.toggleDrawer()}>
+        <Icon size={32} name="th-large" color={THEME.COLORS.secondary} />
+      </TouchableOpacity>
+      <ScreenTitle title="Control manual" />
+
       <Swiper
         loop={false}
         index={currentPosition}
@@ -74,11 +65,8 @@ const ManualConfiguration = () => {
           setCurrentPosition(page);
         }}>
         {VARIABLES_VALUES.map(item => (
-          <View key={item.name} style={tw`flex-1 w-11/12 mx-auto mt-4`}>
-            <Text
-              style={tw`text-lg text-neutral-900 dark:text-neutral-50 font-semibold text-center mb-5`}>
-              {item.name}
-            </Text>
+          <View key={item.name} style={core.controlView}>
+            <Text style={core.pageTitle}>{item.name}</Text>
             <KeyboardAvoidingView
               behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
               {item.variables.map((input, i) => {
@@ -94,22 +82,19 @@ const ManualConfiguration = () => {
                 );
               })}
             </KeyboardAvoidingView>
-            {currentPosition === 4 && (
+            {currentPosition === VARIABLES_VALUES.length - 1 && (
               <TouchableOpacity
-                activeOpacity={0.7}
-                style={tw`bg-teal-500 dark:bg-indigo-600 flex items-center justify-center mt-10 py-5 rounded-xl`}
+                activeOpacity={0.8}
+                style={core.changesButton}
                 onPress={() => handleUpdateVariables()}>
-                <Text
-                  style={tw`text-base tracking-wider font-semibold text-neutral-50`}>
-                  Aplicar cambios
-                </Text>
+                <Text style={core.changesText}>Aplicar cambios</Text>
               </TouchableOpacity>
             )}
           </View>
         ))}
       </Swiper>
-    </SafeAreaView>
+    </Animated.View>
   );
 };
 
-export default ManualConfiguration;
+export default ManualControlScreen;

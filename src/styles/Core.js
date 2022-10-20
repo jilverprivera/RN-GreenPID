@@ -49,4 +49,71 @@ export const core = StyleSheet.create({
     fontFamily: THEME.FONTS.regular,
     color: THEME.COLORS.light,
   },
+
+  animatedImageContainer: {zIndex: 50, flex: 1},
+  animatedImage: {
+    alignSelf: 'center',
+    width: '100%',
+    height: THEME.SIZES.width,
+    resizeMode: 'contain',
+  },
+
+  controlView: {
+    alignSelf: 'center',
+    width: '100%',
+    marginTop: THEME.SIZES.margin / 2,
+  },
+  pageTitle: {
+    fontSize: THEME.SIZES.body1,
+    alignSelf: 'center',
+    fontFamily: THEME.FONTS.semibold,
+    color: THEME.COLORS.secondary,
+    marginBottom: THEME.SIZES.margin,
+  },
+  changesButton: {
+    width: '100%',
+    alignSelf: 'center',
+    padding: THEME.SIZES.padding * 1.5,
+    marginTop: THEME.SIZES.margin / 2,
+    borderRadius: THEME.SIZES.borders,
+    backgroundColor: THEME.COLORS.secondary,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  changesText: {
+    fontSize: THEME.SIZES.body2,
+    fontFamily: THEME.FONTS.medium,
+    color: THEME.COLORS.light,
+  },
+
+  inputContent: {
+    width: '100%',
+    marginBottom: THEME.SIZES.margin / 2,
+  },
+  inputText: {
+    fontSize: THEME.SIZES.body3,
+    fontFamily: THEME.FONTS.regular,
+    color: THEME.COLORS.secondary,
+    marginBottom: THEME.SIZES.margin / 4,
+  },
+  input: {
+    width: '100%',
+    marginBottom: THEME.SIZES.margin / 2,
+    borderRadius: THEME.SIZES.borders,
+    backgroundColor: THEME.COLORS.light,
+    fontSize: THEME.SIZES.body3,
+    fontFamily: THEME.FONTS.medium,
+    color: THEME.COLORS.secondary,
+    paddingHorizontal: THEME.SIZES.padding,
+  },
+
+  linkContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginTop: THEME.SIZES.margin / 2,
+  },
+  linkIcon: {
+    marginRight: THEME.SIZES.margin,
+  },
 });
